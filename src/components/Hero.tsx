@@ -20,10 +20,10 @@ const containerVariants: Variants = {
 
 const itemVariants: Variants = {
   hidden: { opacity: 0, y: 30 },
-  visible: { 
-    opacity: 1, 
+  visible: {
+    opacity: 1,
     y: 0,
-    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const }
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] as const },
   },
 };
 
@@ -50,85 +50,104 @@ export default function Hero() {
 
   return (
     <>
-      <header className="hero" id="home" style={{ position: 'relative', height: '100svh', minHeight: '700px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', padding: '0 var(--pad)', overflow: 'hidden' }}>
-        
+      <header
+        className="relative lg:min-h-[700px] lg:h-[100vh] flex items-center justify-start px-[clamp(20px,5vw,72px)] overflow-hidden"
+        id="home"
+      >
         {/* Background Image with Smooth, Transparent Gradient Overlay */}
-        <motion.div 
-          className="bg" 
+        <motion.div
+          className="absolute inset-0 z-0"
           id="heroBg"
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
           transition={{ duration: 2, ease: "easeOut" }}
-          style={{ position: 'absolute', inset: 0, zIndex: 0 }}
         >
-          <Image 
-            src={unsplash(SITE.heroImage, 2000)} 
-            alt={`Elegant modern living room interior by ${SITE.name} in Thanjavur`} 
-            fill 
-            priority 
-            fetchPriority="high" 
-            sizes="100vw" 
-            quality={85} 
-            style={{ objectFit: 'cover' }}
+          <Image
+            src={unsplash(SITE.heroImage, 2000)}
+            alt={`Elegant modern living room interior by ${SITE.name} in Thanjavur`}
+            fill
+            priority
+            fetchPriority="high"
+            sizes="100vw"
+            quality={85}
+            className="object-cover"
           />
           {/* A sleek, feathered gradient that darkens only the text area, leaving the rest of the image completely visible */}
-          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(15,14,12,0.85) 0%, rgba(15,14,12,0.5) 45%, rgba(15,14,12,0) 80%), linear-gradient(0deg, rgba(15,14,12,0.6) 0%, rgba(15,14,12,0) 30%)' }} />
+          <div className="absolute inset-0  bg-[linear-gradient(90deg,rgba(15,14,12,0.85)_0%,rgba(15,14,12,0.5)_45%,rgba(15,14,12,0.5)_80%),linear-gradient(0deg,rgba(15,14,12,0.6)_0%,rgba(15,14,12,0)_30%)]" />
         </motion.div>
-        
+
         {/* Main Content (No Box, Just clean typography on top of the gradient) */}
-        <div className="in" style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '1400px', margin: '0 auto' }}>
+        <div className="relative z-10 w-full max-w-[1400px] mx-auto flex items-center  py-30">
           {mounted && (
             <motion.div
               variants={containerVariants}
               initial="hidden"
               animate="visible"
-              style={{
-                maxWidth: '820px',
-                paddingTop: '20px'
-              }}
+              className="max-w-[820px] pt-5"
             >
-              <motion.div variants={itemVariants} style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
-                <div style={{ width: '40px', height: '2px', background: 'var(--gold)' }} />
-                <p className="studio-p" style={{ color: 'var(--gold)', letterSpacing: '0.25em', fontSize: '0.85rem', textTransform: 'uppercase', margin: 0, fontWeight: 600, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+              <motion.div
+                variants={itemVariants}
+                className="flex items-center gap-4 mb-6"
+              >
+                <div className="w-10 h-[2px] bg-gold" />
+                <p className="text-gold tracking-[0.25em] text-[0.85rem] uppercase m-0 font-semibold drop-shadow-md">
                   {SITE.name} · Thanjavur
                 </p>
               </motion.div>
-              
-              <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(3.2rem, 6.5vw, 6rem)', lineHeight: 1.05, marginBottom: '24px', fontWeight: 500, color: '#fff', textShadow: '0 4px 16px rgba(0,0,0,0.4)' }}>
+
+              <motion.h1
+                variants={itemVariants}
+                className="text-[clamp(3.2rem,6.5vw,6rem)] leading-[1.05] mb-6 font-medium text-white drop-shadow-lg"
+              >
                 Spaces Designed to Feel Like Home.
               </motion.h1>
-              
-              <motion.p variants={itemVariants} style={{ maxWidth: '640px', fontSize: 'clamp(1.05rem, 1.2vw, 1.2rem)', lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.95)', marginBottom: '40px', fontWeight: 400, textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
-                Thoughtfully designed interiors that combine functionality, elegance, and your personal style. Serving Thanjavur, Trichy, Kumbakonam and nearby towns.
+
+              <motion.p
+                variants={itemVariants}
+                className="max-w-[640px] text-[clamp(1.05rem,1.2vw,1.2rem)] leading-[1.7] text-white/95 mb-10 font-normal drop-shadow-md"
+              >
+                Thoughtfully designed interiors that combine functionality,
+                elegance, and your personal style. Serving Thanjavur, Trichy,
+                Kumbakonam and nearby towns.
               </motion.p>
-              
-              <motion.div variants={itemVariants} className="ctas" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
-                <Link href="/#work" className="btn fill" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '16px 36px', borderRadius: '50px', fontSize: '0.95rem', fontWeight: 500, letterSpacing: '0.05em', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>
+
+              <motion.div
+                variants={itemVariants}
+                className="flex gap-4 flex-wrap"
+              >
+                <Link
+                  href="/#work"
+                  className="inline-flex items-center gap-2.5 px-9 py-4 rounded-full text-[0.95rem] font-medium tracking-wide border-none shadow-[0_4px_12px_rgba(0,0,0,0.3)] bg-gold text-ink hover:bg-white transition-colors duration-300"
+                >
                   View Our Work <ArrowRight size={18} />
                 </Link>
-                <Link href="/#contact" className="btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '16px 36px', borderRadius: '50px', fontSize: '0.95rem', fontWeight: 500, letterSpacing: '0.05em', borderColor: 'rgba(255,255,255,0.4)', color: '#fff', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(4px)', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
+                <Link
+                  href="/#contact"
+                  className="inline-flex items-center gap-2.5 px-9 py-4 rounded-full text-[0.95rem] font-medium tracking-wide border border-white/40 text-white bg-white/5 backdrop-blur-sm shadow-[0_4px_12px_rgba(0,0,0,0.2)] hover:bg-white/10 hover:border-white/60 transition-all duration-300"
+                >
                   Enquire Now
                 </Link>
               </motion.div>
             </motion.div>
           )}
         </div>
-        
+
         {/* Scroll indicator */}
         {mounted && (
-          <motion.div 
-            className="scroll-indicator"
+          <motion.div
+            className="absolute bottom-10 left-1/2 -translate-x-1/2 text-gold flex flex-col items-center gap-2.5 z-10"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
-            style={{ position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)', color: 'var(--gold)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', zIndex: 2 }}
           >
-            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.2em', opacity: 0.9, fontWeight: 500, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Scroll</span>
+            <span className="text-[0.75rem] uppercase tracking-[0.2em] opacity-90 font-medium drop-shadow-md">
+              Scroll
+            </span>
             <motion.div
               animate={{ y: [0, 8, 0] }}
               transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
             >
-              <ChevronDown size={20} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }} />
+              <ChevronDown size={20} className="drop-shadow-md" />
             </motion.div>
           </motion.div>
         )}
@@ -136,7 +155,7 @@ export default function Hero() {
 
       {/* Global Floating Contact Action Button */}
       {mounted && (
-        <div style={{ position: 'fixed', bottom: '40px', right: '40px', zIndex: 999, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+        <div className="fixed bottom-10 right-10 z-[999] flex flex-col items-center gap-4">
           <AnimatePresence>
             {contactOpen && (
               <motion.div
@@ -144,71 +163,38 @@ export default function Hero() {
                 animate={{ opacity: 1, y: 0, scale: 1 }}
                 exit={{ opacity: 0, y: 20, scale: 0.8 }}
                 transition={{ duration: 0.2 }}
-                style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}
+                className="flex flex-col gap-3.5"
               >
-                <a 
-                  href={`https://wa.me/${SITE.phone?.replace(/[^0-9]/g, '')}`} 
-                  target="_blank" 
+                <a
+                  href={`https://wa.me/${SITE.phone?.replace(/[^0-9]/g, "")}`}
+                  target="_blank"
                   rel="noopener noreferrer"
                   aria-label="WhatsApp"
-                  style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    width: '56px', height: '56px', borderRadius: '50%',
-                    background: '#25D366', color: '#fff',
-                    boxShadow: '0 8px 24px rgba(37, 211, 102, 0.4)',
-                    textDecoration: 'none',
-                    transition: 'transform 0.2s'
-                  }}
-                  onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                  onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  className="flex items-center justify-center w-14 h-14 rounded-full bg-[#25D366] text-white shadow-[0_8px_24px_rgba(37,211,102,0.4)] transition-transform duration-200 hover:scale-110"
                 >
                   <WhatsAppIcon size={28} />
                 </a>
-                <a 
-                  href={`tel:${SITE.phone}`} 
+                <a
+                  href={`tel:${SITE.phone}`}
                   aria-label="Call Us"
-                  style={{
-                    display: 'flex', alignItems: 'center', justifyContent: 'center',
-                    width: '56px', height: '56px', borderRadius: '50%',
-                    background: 'var(--gold)', color: '#fff',
-                    boxShadow: '0 8px 24px rgba(176, 141, 87, 0.4)',
-                    textDecoration: 'none',
-                    transition: 'transform 0.2s'
-                  }}
-                  onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
-                  onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                  className="flex items-center justify-center w-14 h-14 rounded-full bg-gold text-white shadow-[0_8px_24px_rgba(176,141,87,0.4)] transition-transform duration-200 hover:scale-110"
                 >
                   <Phone size={24} />
                 </a>
               </motion.div>
             )}
           </AnimatePresence>
-          
+
           <button
             onClick={() => setContactOpen(!contactOpen)}
             aria-label="Contact Options"
-            style={{
-              display: 'flex', alignItems: 'center', justifyContent: 'center',
-              width: '68px', height: '68px', borderRadius: '50%',
-              background: 'var(--ink)', color: '#fff',
-              border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer',
-              boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
-              transition: 'background 0.3s, transform 0.2s'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.background = 'var(--char)';
-              e.currentTarget.style.transform = 'scale(1.05)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.background = 'var(--ink)';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
+            className="flex items-center justify-center w-[68px] h-[68px] rounded-full bg-ink text-white border border-white/15 cursor-pointer shadow-[0_8px_32px_rgba(0,0,0,0.4)] transition-all duration-300 hover:bg-char hover:scale-105"
           >
             <motion.div
               initial={false}
               animate={{ rotate: contactOpen ? 90 : 0 }}
               transition={{ duration: 0.2 }}
-              style={{ display: 'flex' }}
+              className="flex"
             >
               {contactOpen ? <X size={32} /> : <MessageCircle size={32} />}
             </motion.div>
