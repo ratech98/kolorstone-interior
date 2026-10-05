@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence, Variants } from "framer-motion";
@@ -13,13 +13,13 @@ const containerVariants: Variants = {
     opacity: 1,
     transition: {
       staggerChildren: 0.15,
-      delayChildren: 0.2,
+      delayChildren: 0.3,
     },
   },
 };
 
 const itemVariants: Variants = {
-  hidden: { opacity: 0, y: 24 },
+  hidden: { opacity: 0, y: 30 },
   visible: { 
     opacity: 1, 
     y: 0,
@@ -42,16 +42,24 @@ const WhatsAppIcon = ({ size = 24 }: { size?: number }) => (
 
 export default function Hero() {
   const [contactOpen, setContactOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <>
-      <header className="hero" id="home">
+      <header className="hero" id="home" style={{ position: 'relative', height: '100svh', minHeight: '700px', display: 'flex', alignItems: 'center', justifyContent: 'flex-start', padding: '0 var(--pad)', overflow: 'hidden' }}>
+        
+        {/* Background Image with Smooth, Transparent Gradient Overlay */}
         <motion.div 
           className="bg" 
           id="heroBg"
           initial={{ scale: 1.05 }}
           animate={{ scale: 1 }}
-          transition={{ duration: 1.5, ease: "easeOut" }}
+          transition={{ duration: 2, ease: "easeOut" }}
+          style={{ position: 'absolute', inset: 0, zIndex: 0 }}
         >
           <Image 
             src={unsplash(SITE.heroImage, 2000)} 
@@ -60,121 +68,153 @@ export default function Hero() {
             priority 
             fetchPriority="high" 
             sizes="100vw" 
-            quality={75} 
+            quality={85} 
             style={{ objectFit: 'cover' }}
           />
+          {/* A sleek, feathered gradient that darkens only the text area, leaving the rest of the image completely visible */}
+          <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(15,14,12,0.85) 0%, rgba(15,14,12,0.5) 45%, rgba(15,14,12,0) 80%), linear-gradient(0deg, rgba(15,14,12,0.6) 0%, rgba(15,14,12,0) 30%)' }} />
         </motion.div>
-        <div className="in">
-          <motion.div
-            variants={containerVariants}
-            initial="hidden"
-            animate="visible"
-          >
-            <motion.p variants={itemVariants} className="studio-p" style={{ color: 'var(--gold)', letterSpacing: '0.2em', fontSize: '0.85rem', textTransform: 'uppercase', marginBottom: '16px' }}>
-              {SITE.name} · Interior Designers in Thanjavur
-            </motion.p>
-            <motion.h1 variants={itemVariants}>
-              Spaces Designed to Feel Like Home.
-            </motion.h1>
-            <motion.p variants={itemVariants} style={{ maxWidth: '560px', fontSize: '1.05rem', lineHeight: 1.6, opacity: 0.95 }}>
-              Thoughtfully designed interiors that combine functionality, elegance, and your personal style. Serving Thanjavur, Trichy, Kumbakonam and nearby towns.
-            </motion.p>
-            
-            <motion.div variants={itemVariants} className="ctas" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap', marginTop: '12px' }}>
-              <Link href="/#work" className="btn fill" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                View Our Work <ArrowRight size={18} />
-              </Link>
-              <Link href="/#contact" className="btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                Enquire Now
-              </Link>
+        
+        {/* Main Content (No Box, Just clean typography on top of the gradient) */}
+        <div className="in" style={{ position: 'relative', zIndex: 2, width: '100%', maxWidth: '1400px', margin: '0 auto' }}>
+          {mounted && (
+            <motion.div
+              variants={containerVariants}
+              initial="hidden"
+              animate="visible"
+              style={{
+                maxWidth: '820px',
+                paddingTop: '20px'
+              }}
+            >
+              <motion.div variants={itemVariants} style={{ display: 'flex', alignItems: 'center', gap: '16px', marginBottom: '24px' }}>
+                <div style={{ width: '40px', height: '2px', background: 'var(--gold)' }} />
+                <p className="studio-p" style={{ color: 'var(--gold)', letterSpacing: '0.25em', fontSize: '0.85rem', textTransform: 'uppercase', margin: 0, fontWeight: 600, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>
+                  {SITE.name} · Thanjavur
+                </p>
+              </motion.div>
+              
+              <motion.h1 variants={itemVariants} style={{ fontSize: 'clamp(3.2rem, 6.5vw, 6rem)', lineHeight: 1.05, marginBottom: '24px', fontWeight: 500, color: '#fff', textShadow: '0 4px 16px rgba(0,0,0,0.4)' }}>
+                Spaces Designed to Feel Like Home.
+              </motion.h1>
+              
+              <motion.p variants={itemVariants} style={{ maxWidth: '640px', fontSize: 'clamp(1.05rem, 1.2vw, 1.2rem)', lineHeight: 1.7, color: 'rgba(255, 255, 255, 0.95)', marginBottom: '40px', fontWeight: 400, textShadow: '0 2px 8px rgba(0,0,0,0.5)' }}>
+                Thoughtfully designed interiors that combine functionality, elegance, and your personal style. Serving Thanjavur, Trichy, Kumbakonam and nearby towns.
+              </motion.p>
+              
+              <motion.div variants={itemVariants} className="ctas" style={{ display: 'flex', gap: '16px', flexWrap: 'wrap' }}>
+                <Link href="/#work" className="btn fill" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '16px 36px', borderRadius: '50px', fontSize: '0.95rem', fontWeight: 500, letterSpacing: '0.05em', border: 'none', boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}>
+                  View Our Work <ArrowRight size={18} />
+                </Link>
+                <Link href="/#contact" className="btn" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', padding: '16px 36px', borderRadius: '50px', fontSize: '0.95rem', fontWeight: 500, letterSpacing: '0.05em', borderColor: 'rgba(255,255,255,0.4)', color: '#fff', background: 'rgba(255,255,255,0.05)', backdropFilter: 'blur(4px)', boxShadow: '0 4px 12px rgba(0,0,0,0.2)' }}>
+                  Enquire Now
+                </Link>
+              </motion.div>
             </motion.div>
-          </motion.div>
+          )}
         </div>
         
-        <motion.div 
-          className="scroll-indicator"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1, duration: 1 }}
-          style={{ position: 'absolute', bottom: '30px', left: '50%', transform: 'translateX(-50%)', color: 'var(--gold)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', zIndex: 2 }}
-        >
-          <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.15em', opacity: 0.8 }}>Scroll</span>
-          <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+        {/* Scroll indicator */}
+        {mounted && (
+          <motion.div 
+            className="scroll-indicator"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 1.5, duration: 1 }}
+            style={{ position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)', color: 'var(--gold)', display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '10px', zIndex: 2 }}
           >
-            <ChevronDown size={20} />
+            <span style={{ fontSize: '0.75rem', textTransform: 'uppercase', letterSpacing: '0.2em', opacity: 0.9, fontWeight: 500, textShadow: '0 2px 4px rgba(0,0,0,0.5)' }}>Scroll</span>
+            <motion.div
+              animate={{ y: [0, 8, 0] }}
+              transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+            >
+              <ChevronDown size={20} style={{ filter: 'drop-shadow(0 2px 4px rgba(0,0,0,0.5))' }} />
+            </motion.div>
           </motion.div>
-        </motion.div>
+        )}
       </header>
 
       {/* Global Floating Contact Action Button */}
-      <div style={{ position: 'fixed', bottom: '30px', right: '30px', zIndex: 999, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '14px' }}>
-        <AnimatePresence>
-          {contactOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: 20, scale: 0.8 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: 20, scale: 0.8 }}
-              transition={{ duration: 0.2 }}
-              style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}
-            >
-              <a 
-                href={`https://wa.me/${SITE.phone?.replace(/[^0-9]/g, '')}`} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                aria-label="WhatsApp"
-                style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  width: '52px', height: '52px', borderRadius: '50%',
-                  background: '#25D366', color: '#fff',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                  textDecoration: 'none'
-                }}
+      {mounted && (
+        <div style={{ position: 'fixed', bottom: '40px', right: '40px', zIndex: 999, display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '16px' }}>
+          <AnimatePresence>
+            {contactOpen && (
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 20, scale: 0.8 }}
+                transition={{ duration: 0.2 }}
+                style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}
               >
-                <WhatsAppIcon size={28} />
-              </a>
-              <a 
-                href={`tel:${SITE.phone}`} 
-                aria-label="Call Us"
-                style={{
-                  display: 'flex', alignItems: 'center', justifyContent: 'center',
-                  width: '52px', height: '52px', borderRadius: '50%',
-                  background: 'var(--gold)', color: '#fff',
-                  boxShadow: '0 4px 12px rgba(0,0,0,0.15)',
-                  textDecoration: 'none'
-                }}
-              >
-                <Phone size={22} />
-              </a>
-            </motion.div>
-          )}
-        </AnimatePresence>
-        
-        <button
-          onClick={() => setContactOpen(!contactOpen)}
-          aria-label="Contact Options"
-          style={{
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            width: '64px', height: '64px', borderRadius: '50%',
-            background: 'var(--ink)', color: '#fff',
-            border: '1px solid rgba(255,255,255,0.1)', cursor: 'pointer',
-            boxShadow: '0 4px 16px rgba(0,0,0,0.3)',
-            transition: 'background 0.2s'
-          }}
-          onMouseOver={(e) => e.currentTarget.style.background = 'var(--char)'}
-          onMouseOut={(e) => e.currentTarget.style.background = 'var(--ink)'}
-        >
-          <motion.div
-            initial={false}
-            animate={{ rotate: contactOpen ? 90 : 0 }}
-            transition={{ duration: 0.2 }}
-            style={{ display: 'flex' }}
+                <a 
+                  href={`https://wa.me/${SITE.phone?.replace(/[^0-9]/g, '')}`} 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  aria-label="WhatsApp"
+                  style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    width: '56px', height: '56px', borderRadius: '50%',
+                    background: '#25D366', color: '#fff',
+                    boxShadow: '0 8px 24px rgba(37, 211, 102, 0.4)',
+                    textDecoration: 'none',
+                    transition: 'transform 0.2s'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  <WhatsAppIcon size={28} />
+                </a>
+                <a 
+                  href={`tel:${SITE.phone}`} 
+                  aria-label="Call Us"
+                  style={{
+                    display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    width: '56px', height: '56px', borderRadius: '50%',
+                    background: 'var(--gold)', color: '#fff',
+                    boxShadow: '0 8px 24px rgba(176, 141, 87, 0.4)',
+                    textDecoration: 'none',
+                    transition: 'transform 0.2s'
+                  }}
+                  onMouseOver={(e) => e.currentTarget.style.transform = 'scale(1.1)'}
+                  onMouseOut={(e) => e.currentTarget.style.transform = 'scale(1)'}
+                >
+                  <Phone size={24} />
+                </a>
+              </motion.div>
+            )}
+          </AnimatePresence>
+          
+          <button
+            onClick={() => setContactOpen(!contactOpen)}
+            aria-label="Contact Options"
+            style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              width: '68px', height: '68px', borderRadius: '50%',
+              background: 'var(--ink)', color: '#fff',
+              border: '1px solid rgba(255,255,255,0.15)', cursor: 'pointer',
+              boxShadow: '0 8px 32px rgba(0,0,0,0.4)',
+              transition: 'background 0.3s, transform 0.2s'
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.background = 'var(--char)';
+              e.currentTarget.style.transform = 'scale(1.05)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.background = 'var(--ink)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
           >
-            {contactOpen ? <X size={28} /> : <MessageCircle size={28} />}
-          </motion.div>
-        </button>
-      </div>
+            <motion.div
+              initial={false}
+              animate={{ rotate: contactOpen ? 90 : 0 }}
+              transition={{ duration: 0.2 }}
+              style={{ display: 'flex' }}
+            >
+              {contactOpen ? <X size={32} /> : <MessageCircle size={32} />}
+            </motion.div>
+          </button>
+        </div>
+      )}
     </>
   );
 }
