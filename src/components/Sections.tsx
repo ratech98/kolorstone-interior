@@ -5,7 +5,7 @@ import { SERVICES } from "@/lib/services";
 import { LOCATIONS } from "@/lib/locations";
 import { SITE, unsplash } from "@/lib/site";
 import ContactForm from "./ContactForm";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, MapPin } from "lucide-react";
 
 export function ServicesSection() {
   return (
@@ -54,26 +54,31 @@ export function AreasSection() {
   return (
     <section
       id="areas"
-      className="py-24 md:py-32 px-5 md:px-[clamp(20px,5vw,72px)] bg-ink text-white relative"
+      className="py-24 md:py-32 px-5 md:px-[clamp(20px,5vw,72px)] bg-[#fafafa] relative"
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16 md:mb-20 max-w-3xl">
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 tracking-tight">
+          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 tracking-tight text-ink">
             Interior Designers in Thanjavur, Trichy &amp; Nearby
           </h2>
-          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+          <p className="text-lg md:text-xl text-ink/70 font-light leading-relaxed">
             Our studio is in Nanjikottai, Thanjavur. We design and execute
             interiors across the Delta region and central Tamil Nadu.
           </p>
         </div>
-        <div className="flex flex-wrap gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {LOCATIONS.map((l) => (
             <Link
               key={l.slug}
               href={`/interior-designers/${l.slug}`}
-              className="px-6 py-3 rounded-full border border-white/20 hover:border-gold text-white/90 hover:text-gold transition-colors duration-300 backdrop-blur-sm bg-white/5 hover:bg-gold/10"
+              className="group flex items-center p-5 md:p-6 bg-white rounded-2xl border border-black/5 hover:border-gold/30 hover:shadow-[0_10px_40px_rgba(176,141,87,0.12)] transition-all duration-300"
             >
-              {l.name}
+              <div className="w-12 h-12 rounded-full bg-ink/5 group-hover:bg-gold/10 flex items-center justify-center mr-4 transition-colors duration-300 shrink-0">
+                <MapPin className="w-5 h-5 text-ink/40 group-hover:text-gold transition-colors duration-300" />
+              </div>
+              <span className="font-medium text-ink group-hover:text-gold transition-colors duration-300 text-lg">
+                {l.name}
+              </span>
             </Link>
           ))}
         </div>
