@@ -92,26 +92,37 @@ export function WhySection() {
   return (
     <section
       id="about"
-      className="py-24 md:py-32 px-5 md:px-[clamp(20px,5vw,72px)] bg-[#fafafa]"
+      className="py-24 md:py-32 px-5 md:px-[clamp(20px,5vw,72px)] bg-[#100f0d] text-white"
     >
       <div className="max-w-[1400px] mx-auto">
-        <div className="mb-16 md:mb-24">
-          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-ink mb-6 tracking-tight">
-            Why Choose Us
-          </h2>
+        <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
+          <div className="max-w-2xl">
+            <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-tight">
+              Why Choose Us
+            </h2>
+            <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed">
+              We bring craftsmanship, transparency, and a tailored approach to every single project we take on.
+            </p>
+          </div>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-8 gap-y-16 border-t border-black/10 pt-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 border-t border-white/10 pt-16">
           {WHY.map((w) => (
-            <div key={w[0]} className="group">
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-                className="w-10 h-10 stroke-gold fill-none stroke-[1.5] mb-6 transform group-hover:-translate-y-2 group-hover:scale-110 transition-transform duration-300"
-              >
-                <path d={w[2]} />
-              </svg>
-              <h3 className="text-2xl font-serif text-ink mb-3">{w[0]}</h3>
-              <p className="text-ink/60 leading-relaxed font-light">{w[1]}</p>
+            <div key={w[0]} className="group relative">
+              <div className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center mb-8 transform group-hover:-translate-y-2 group-hover:bg-gold/10 transition-all duration-500 border border-white/5 group-hover:border-gold/30">
+                <svg
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                  className="w-8 h-8 stroke-gold fill-none stroke-[1.5] transition-transform duration-500 group-hover:scale-110"
+                >
+                  <path d={w[2]} />
+                </svg>
+              </div>
+              <h3 className="text-2xl md:text-3xl font-serif text-white/90 mb-4 group-hover:text-gold transition-colors duration-300">
+                {w[0]}
+              </h3>
+              <p className="text-white/50 leading-relaxed font-light text-lg">
+                {w[1]}
+              </p>
             </div>
           ))}
         </div>
