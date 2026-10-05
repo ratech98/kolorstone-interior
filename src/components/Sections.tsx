@@ -11,14 +11,14 @@ export function ServicesSection() {
   return (
     <section
       id="services"
-      className="py-24 md:py-32 px-5 md:px-[clamp(20px,5vw,72px)] bg-white relative"
+      className="py-24 md:py-32 px-5 md:px-[clamp(20px,5vw,72px)] bg-ink relative"
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16 md:mb-24 max-w-2xl mx-auto text-center">
-          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-ink mb-6 tracking-tight">
+          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
             Interior Design Services
           </h2>
-          <p className="text-lg md:text-xl text-ink/70 font-light leading-relaxed">
+          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
             Everything you need to turn an empty or tired space into a home or
             workplace you love.
           </p>
@@ -28,14 +28,14 @@ export function ServicesSection() {
             <Link
               key={s.slug}
               href={`/services/${s.slug}`}
-              className="group relative p-8 md:p-10 rounded-[2rem] bg-[#fafafa] hover:bg-white border border-black/5 hover:border-gold/20 shadow-sm hover:shadow-[0_8px_30px_rgba(176,141,87,0.15)] transition-all duration-500 overflow-hidden flex flex-col justify-between aspect-square md:aspect-auto h-full min-h-[320px]"
+              className="group relative p-8 md:p-10 rounded-[2rem] bg-white/5 hover:bg-white/10 border border-white/5 hover:border-gold/30 shadow-sm transition-all duration-500 overflow-hidden flex flex-col justify-between aspect-square md:aspect-auto h-full min-h-[320px] backdrop-blur-sm"
             >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gold/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-gold/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
               <div>
-                <h3 className="text-2xl md:text-3xl font-serif text-ink mb-4">
+                <h3 className="text-2xl md:text-3xl font-serif text-white mb-4">
                   {s.name}
                 </h3>
-                <p className="text-ink/60 leading-relaxed font-light">
+                <p className="text-white/60 leading-relaxed font-light">
                   {s.summary}
                 </p>
               </div>
