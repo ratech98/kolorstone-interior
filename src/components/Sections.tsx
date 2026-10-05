@@ -18,7 +18,8 @@ export function ServicesSection() {
           <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
             Interior Design Services
           </h2>
-          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+          <p
+          className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
             Everything you need to turn an empty or tired space into a home or
             workplace you love.
           </p>

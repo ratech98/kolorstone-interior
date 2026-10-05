@@ -4,7 +4,9 @@ const nextConfig = {
   poweredByHeader: false,
   compress: true,
   trailingSlash: false,
+  output: "export",
   images: {
+    unoptimized: true,
     formats: ["image/avif", "image/webp"],
     // Remove this once you replace the Unsplash placeholders with your own project photos.
     remotePatterns: [{ protocol: "https", hostname: "images.unsplash.com" }],
