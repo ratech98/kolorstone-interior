@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 
+export const dynamic = "force-static";
 export const alt =
   "Kolorstones Home Interiors | Interior Designers in Thanjavur & Trichy";
 export const size = { width: 1200, height: 630 };
