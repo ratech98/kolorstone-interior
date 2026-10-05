@@ -3,6 +3,8 @@ import { SITE, abs } from "@/lib/site";
 import { LOCATIONS } from "@/lib/locations";
 import { SERVICES } from "@/lib/services";
 
+export const dynamic = "force-static";
+
 export default function sitemap(): MetadataRoute.Sitemap {
   const lastModified = new Date(SITE.lastUpdated);
   return [
