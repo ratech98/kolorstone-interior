@@ -19,8 +19,8 @@ section{padding:clamp(72px,10vw,140px) var(--pad)}
 .js .rv.in{opacity:1;transform:none}
 
 /* nav */
-nav{position:fixed;inset:0 0 auto;z-index:50;display:flex;align-items:center;justify-content:space-between;padding:20px var(--pad);color:#fff;transition:.3s}
-nav.solid{background:rgba(20,18,15,.94);padding-block:14px;backdrop-filter:blur(8px)}
+nav{z-index:50;color:#fff}
+nav.solid{backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px)}
 .logo{font:600 1.5rem var(--serif);letter-spacing:.04em}
 .links{display:flex;gap:28px;align-items:center;font-size:.9rem}
 .links a:not(.btn){opacity:.85;transition:.2s}.links a:not(.btn):hover{opacity:1;color:var(--gold)}
