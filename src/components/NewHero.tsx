@@ -43,7 +43,7 @@ export default function NewHero() {
             alt="Kolorstones Logo"
             width={140}
             height={45}
-            className="object-cover"
+            className="object-contain w-auto h-auto max-h-[32px]"
           />
         </div>
 

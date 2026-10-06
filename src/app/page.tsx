@@ -18,6 +18,7 @@
 import NewHero from "@/components/NewHero";
 import OurWork from "@/components/OurWork";
 import WhyChooseUs from "@/components/WhyChooseUs";
+import DesignProcess from "@/components/DesignProcess";
 
 export default function Home() {
   return (
@@ -26,6 +27,7 @@ export default function Home() {
         <NewHero />
         <OurWork />
         <WhyChooseUs />
+        <DesignProcess />
         
         {/* OLD PAGE CONTENT COMMENTED OUT BELOW */}
         {/*
