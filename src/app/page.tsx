@@ -1,25 +1,32 @@
-import Link from "next/link";
-import Nav from "@/components/Nav";
-import Footer from "@/components/Footer";
-import Faq from "@/components/Faq";
-import ProjectGallery from "@/components/ProjectGallery";
-import Reviews from "@/components/Reviews";
-import Hero from "@/components/Hero";
-import {
-  AreasSection,
-  ContactSection,
-  InstagramSection,
-  ProcessSection,
-  ServicesSection,
-  WhySection,
-} from "@/components/Sections";
-import { HOME_FAQS, PROJECTS, REVIEWS } from "@/lib/data";
+// Old imports commented out
+// import Link from "next/link";
+// import Nav from "@/components/Nav";
+// import Footer from "@/components/Footer";
+// import Faq from "@/components/Faq";
+// import ProjectGallery from "@/components/ProjectGallery";
+// import Reviews from "@/components/Reviews";
+// import Hero from "@/components/Hero";
+// import {
+//   AreasSection,
+//   ContactSection,
+//   InstagramSection,
+//   ProcessSection,
+//   ServicesSection,
+//   WhySection,
+// } from "@/components/Sections";
+// import { HOME_FAQS, PROJECTS, REVIEWS } from "@/lib/data";
+
+import NewHero from "@/components/NewHero";
 
 export default function Home() {
   return (
     <>
-      <Nav />
       <main id="main">
+        <NewHero />
+        
+        {/* OLD PAGE CONTENT COMMENTED OUT BELOW */}
+        {/*
+        <Nav />
         <Hero />
 
         <section
@@ -57,8 +64,9 @@ export default function Home() {
         <Faq faqs={HOME_FAQS} />
         <InstagramSection />
         <ContactSection />
+        <Footer />
+        */}
       </main>
-      <Footer />
     </>
   );
 }

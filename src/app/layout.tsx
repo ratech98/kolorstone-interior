@@ -1,25 +1,9 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, DM_Sans } from "next/font/google";
 import "./globals.css";
 import { SITE } from "@/lib/site";
 import Reveal from "@/components/Reveal";
-import Floating from "@/components/Floating";
 import JsonLd from "@/components/JsonLd";
 import { businessSchema, websiteSchema } from "@/lib/schema";
-
-const serif = Cormorant_Garamond({
-  subsets: ["latin"],
-  weight: ["400", "500", "600"],
-  style: ["normal", "italic"],
-  variable: "--font-serif",
-  display: "swap",
-});
-const sans = DM_Sans({
-  subsets: ["latin"],
-  weight: ["400", "500"],
-  variable: "--font-sans",
-  display: "swap",
-});
 
 export const viewport: Viewport = {
   width: "device-width",
@@ -30,12 +14,10 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
   title: {
-    default:
-      "Interior Designers in Thanjavur, Trichy & Kumbakonam | Kolorstones Home Interiors",
+    default: "Interior Designers in Thanjavur, Trichy & Kumbakonam | Kolorstones Home Interiors",
     template: "%s | Kolorstones Home Interiors",
   },
-  description:
-    "Kolorstones Home Interiors is a Thanjavur interior design studio for homes, modular kitchens and offices. Serving Thanjavur, Trichy, Kumbakonam, Pattukkottai and nearby towns.",
+  description: "Kolorstones Home Interiors is a Thanjavur interior design studio for homes, modular kitchens and offices. Serving Thanjavur, Trichy, Kumbakonam, Pattukkottai and nearby towns.",
   applicationName: SITE.name,
   keywords: [
     "interior designers in Thanjavur",
@@ -55,8 +37,7 @@ export const metadata: Metadata = {
     url: "/",
     siteName: SITE.name,
     title: "Interior Designers in Thanjavur, Trichy & Kumbakonam | Kolorstones",
-    description:
-      "Thoughtfully designed interiors that combine functionality, elegance and your personal style.",
+    description: "Thoughtfully designed interiors that combine functionality, elegance and your personal style.",
   },
   twitter: { card: "summary_large_image" },
   robots: {
@@ -70,20 +51,8 @@ export const metadata: Metadata = {
       "max-video-preview": -1,
     },
   },
-  verification: SITE.gscVerification
-    ? { google: SITE.gscVerification }
-    : undefined,
+  verification: SITE.gscVerification ? { google: SITE.gscVerification } : undefined,
   category: "Interior design",
-  other: {
-    "geo.region": "IN-TN",
-    "geo.placename": "Thanjavur",
-    ...(SITE.geo
-      ? {
-          "geo.position": `${SITE.geo.lat};${SITE.geo.lng}`,
-          ICBM: `${SITE.geo.lat}, ${SITE.geo.lng}`,
-        }
-      : {}),
-  },
 };
 
 export default function RootLayout({
@@ -92,26 +61,21 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html
-      lang="en-IN"
-      className={`${serif.variable} ${sans.variable}`}
-      suppressHydrationWarning
-    >
+    <html lang="en-IN" suppressHydrationWarning>
       <head>
-        {/* lets the CSS hide .rv elements only when JS is available (no invisible content without JS) */}
+        {/* Satoshi Font from Fontshare */}
+        <link href="https://api.fontshare.com/v2/css?f[]=satoshi@900,700,500,300,400&display=swap" rel="stylesheet" />
         <script
           dangerouslySetInnerHTML={{
             __html: "document.documentElement.classList.add('js')",
           }}
         />
       </head>
-      <body>
-        <a className="skip" href="#main">
+      <body className="font-satoshi antialiased text-[#5E5E5E]">
+        <a className="absolute -left-[9999px] top-2 z-[200] bg-primary text-white px-4 py-2 focus:left-2" href="#main">
           Skip to content
         </a>
         {children}
-        {/* cta butons */}
-        {/* <Floating /> */}
         <Reveal />
         <JsonLd data={[businessSchema(), websiteSchema()]} />
       </body>
