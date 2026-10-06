@@ -28,7 +28,7 @@ export default function NewHero() {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-[#EBEBEB] relative font-satoshi flex flex-col items-center pt-8">
+    <div className="min-h-screen bg-[#f3f3f3] relative font-satoshi flex flex-col items-center pt-8">
       {/* Floating Navbar */}
       <nav
         className={`flex items-center justify-between px-8 py-4 z-50 fixed left-1/2 -translate-x-1/2 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] border ${

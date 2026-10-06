@@ -3,7 +3,7 @@ import { WHY } from "@/lib/data";
 
 export default function WhyChooseUs() {
   return (
-    <section className="bg-[#EBEBEB] py-24 px-6 relative font-satoshi">
+    <section className="bg-[#f3f3f3] py-24 px-6 relative font-satoshi">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6">
