@@ -13,7 +13,7 @@ const imgs = [
 
 export default function OurWork() {
   return (
-    <section className="bg-[#EBEBEB] py-24 px-6 relative font-satoshi">
+    <section className="bg-[#FAFAFA] py-24 px-6 relative font-satoshi">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">
@@ -21,7 +21,8 @@ export default function OurWork() {
             Our Work
           </h2>
           <p className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light">
-            Homes, kitchens and workplaces designed around the people who use them.
+            Homes, kitchens and workplaces designed around the people who use
+            them.
           </p>
         </div>
 
@@ -32,39 +33,139 @@ export default function OurWork() {
           <div className="w-3/4 flex flex-col gap-4">
             {/* Top Row: 3 Images */}
             <div className="flex-1 grid grid-cols-3 gap-4">
-              <Link href="#" className="block relative w-full h-full rounded-xl overflow-hidden group">
-                <Image src={imgs[0]} alt="Work 1" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Link
+                href="#"
+                className="block relative w-full h-full rounded-xl overflow-hidden group"
+              >
+                <Image
+                  src={imgs[0]}
+                  alt="Work 1"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-white font-medium flex items-center gap-2">View Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+                  <span className="text-white font-medium flex items-center gap-2">
+                    View Project{" "}
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M7 17l9.2-9.2M17 17V7H7" />
+                    </svg>
+                  </span>
                 </div>
               </Link>
-              <Link href="#" className="block relative w-full h-full rounded-xl overflow-hidden group">
-                <Image src={imgs[1]} alt="Work 2" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Link
+                href="#"
+                className="block relative w-full h-full rounded-xl overflow-hidden group"
+              >
+                <Image
+                  src={imgs[1]}
+                  alt="Work 2"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-white font-medium flex items-center gap-2">Bedroom <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+                  <span className="text-white font-medium flex items-center gap-2">
+                    Bedroom{" "}
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M7 17l9.2-9.2M17 17V7H7" />
+                    </svg>
+                  </span>
                 </div>
               </Link>
-              <Link href="#" className="block relative w-full h-full rounded-xl overflow-hidden group">
-                <Image src={imgs[2]} alt="Work 3" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+              <Link
+                href="#"
+                className="block relative w-full h-full rounded-xl overflow-hidden group"
+              >
+                <Image
+                  src={imgs[2]}
+                  alt="Work 3"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-500"
+                />
                 <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                  <span className="text-white font-medium flex items-center gap-2">View Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+                  <span className="text-white font-medium flex items-center gap-2">
+                    View Project{" "}
+                    <svg
+                      width="16"
+                      height="16"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth="2"
+                    >
+                      <path d="M7 17l9.2-9.2M17 17V7H7" />
+                    </svg>
+                  </span>
                 </div>
               </Link>
             </div>
             {/* Bottom Row: 1 Wide Image */}
-            <Link href="#" className="block flex-1 relative w-full h-full rounded-xl overflow-hidden group">
-              <Image src={imgs[4]} alt="Work 4" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+            <Link
+              href="#"
+              className="block flex-1 relative w-full h-full rounded-xl overflow-hidden group"
+            >
+              <Image
+                src={imgs[4]}
+                alt="Work 4"
+                fill
+                className="object-cover group-hover:scale-105 transition-transform duration-500"
+              />
               <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                <span className="text-white font-medium flex items-center gap-2">View Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+                <span className="text-white font-medium flex items-center gap-2">
+                  View Project{" "}
+                  <svg
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                  >
+                    <path d="M7 17l9.2-9.2M17 17V7H7" />
+                  </svg>
+                </span>
               </div>
             </Link>
           </div>
-          
+
           {/* Right Side (25%) */}
-          <Link href="#" className="block w-1/4 relative h-full rounded-xl overflow-hidden group">
-            <Image src={imgs[3]} alt="Work 5" fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+          <Link
+            href="#"
+            className="block w-1/4 relative h-full rounded-xl overflow-hidden group"
+          >
+            <Image
+              src={imgs[3]}
+              alt="Work 5"
+              fill
+              className="object-cover group-hover:scale-105 transition-transform duration-500"
+            />
             <div className="absolute inset-0 bg-black/20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-              <span className="text-white font-medium flex items-center gap-2">View Project <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2"><path d="M7 17l9.2-9.2M17 17V7H7"/></svg></span>
+              <span className="text-white font-medium flex items-center gap-2">
+                View Project{" "}
+                <svg
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  strokeWidth="2"
+                >
+                  <path d="M7 17l9.2-9.2M17 17V7H7" />
+                </svg>
+              </span>
             </div>
           </Link>
         </div>
@@ -72,24 +173,38 @@ export default function OurWork() {
         {/* Mobile / Tablet Layout */}
         <div className="lg:hidden flex flex-col gap-4">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link href="#" className="block relative w-full h-[300px] rounded-xl overflow-hidden">
+            <Link
+              href="#"
+              className="block relative w-full h-[300px] rounded-xl overflow-hidden"
+            >
               <Image src={imgs[0]} alt="Work 1" fill className="object-cover" />
             </Link>
-            <Link href="#" className="block relative w-full h-[300px] rounded-xl overflow-hidden">
+            <Link
+              href="#"
+              className="block relative w-full h-[300px] rounded-xl overflow-hidden"
+            >
               <Image src={imgs[1]} alt="Work 2" fill className="object-cover" />
             </Link>
-            <Link href="#" className="block relative w-full h-[300px] rounded-xl overflow-hidden">
+            <Link
+              href="#"
+              className="block relative w-full h-[300px] rounded-xl overflow-hidden"
+            >
               <Image src={imgs[2]} alt="Work 3" fill className="object-cover" />
             </Link>
-            <Link href="#" className="block relative w-full h-[300px] rounded-xl overflow-hidden">
+            <Link
+              href="#"
+              className="block relative w-full h-[300px] rounded-xl overflow-hidden"
+            >
               <Image src={imgs[3]} alt="Work 4" fill className="object-cover" />
             </Link>
           </div>
-          <Link href="#" className="block relative w-full h-[300px] rounded-xl overflow-hidden">
-             <Image src={imgs[4]} alt="Work 5" fill className="object-cover" />
+          <Link
+            href="#"
+            className="block relative w-full h-[300px] rounded-xl overflow-hidden"
+          >
+            <Image src={imgs[4]} alt="Work 5" fill className="object-cover" />
           </Link>
         </div>
-
       </div>
     </section>
   );
