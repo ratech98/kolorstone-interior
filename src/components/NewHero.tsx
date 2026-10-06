@@ -1,4 +1,5 @@
-import React from "react";
+"use client";
+import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import heroImg from "@/assets/hero_img1.png";
@@ -6,10 +7,26 @@ import heroMobileImg from "@/assets/hero_mobile_img.png";
 import logo from "@/assets/logo.png";
 
 export default function NewHero() {
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#EBEBEB] relative font-satoshi flex flex-col items-center pt-8">
       {/* Floating Navbar */}
-      <nav className="w-11/12 max-w-7xl bg-[#DEDEDE]/20 backdrop-blur-md rounded-full px-8 py-4 flex items-center justify-between shadow-sm z-50 fixed top-8">
+      <nav 
+        className={`flex items-center justify-between px-8 py-4 z-50 fixed left-1/2 -translate-x-1/2 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] border ${
+          isScrolled 
+            ? "top-0 w-full max-w-full bg-white/95 backdrop-blur-lg rounded-none border-gray-200 shadow-md" 
+            : "top-8 w-11/12 max-w-7xl bg-[#DEDEDE]/30 backdrop-blur-md rounded-full border-transparent shadow-sm"
+        }`}
+      >
         <div className="flex items-center">
           <Image
             src={logo}

@@ -13,16 +13,17 @@
 //   ProcessSection,
 //   ServicesSection,
 //   WhySection,
-// } from "@/components/Sections";
 // import { HOME_FAQS, PROJECTS, REVIEWS } from "@/lib/data";
 
 import NewHero from "@/components/NewHero";
+import OurWork from "@/components/OurWork";
 
 export default function Home() {
   return (
     <>
       <main id="main">
         <NewHero />
+        <OurWork />
         
         {/* OLD PAGE CONTENT COMMENTED OUT BELOW */}
         {/*
