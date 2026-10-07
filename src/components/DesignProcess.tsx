@@ -82,27 +82,25 @@ export default function DesignProcess() {
   return (
     <div className="bg-[#FAFAFA] py-24 px-6 overflow-x-clip flex flex-col items-center justify-center lg:gap-[62px] gap-8 font-satoshi">
       {/* top */}
-      <div className="flex flex-col gap-4 w-full max-w-[1200px]">
-        <div className="flex lg:flex-row flex-col justify-between gap-6">
-          <div className="flex flex-col gap-4 w-full">
-            <motion.h2
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.3, margin: "-100px" }}
-              variants={slideInLeft}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="text-[#14120f] font-serif text-[32px] lg:text-[40px] leading-tight"
-            >
-              Our Design Process
-            </motion.h2>
-          </div>
+      <div className="w-full max-w-[1200px]">
+        <div className="text-center">
+          <motion.h2
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3, margin: "-100px" }}
+            variants={slideInTop}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6"
+          >
+            Our Design Process
+          </motion.h2>
           <motion.p
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.3, margin: "-100px" }}
-            variants={slideInRight}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-[#5E5E5E] text-lg w-full lg:max-w-[40%] font-light leading-relaxed"
+            variants={slideInTop}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+            className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed"
           >
             A seamless, transparent journey from your first idea to the final
             handover. We guide you through every step of creating your perfect
