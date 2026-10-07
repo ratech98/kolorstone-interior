@@ -195,28 +195,34 @@ export default function DesignProcess() {
       </div>
 
       {/* mobile and tab ui */}
-      <div className="lg:hidden flex flex-col gap-16 w-full mt-12 relative min-h-[60vh]">
+      <div className="lg:hidden flex flex-col gap-12 w-full mt-8 relative">
         {/* Vertical Connecting Line */}
-        <div className="absolute left-[37px] top-12 bottom-8 w-[2px] bg-gradient-to-b from-[#464CC8] via-[#009987] to-[#BFD146] opacity-30 z-0"></div>
+        <div className="absolute left-[23px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#464CC8] via-[#009987] to-[#BFD146] opacity-30 z-0"></div>
 
         {processSteps.map((item, i) => (
-          <div key={i} className="relative w-full pl-8 z-10">
-            <div className="absolute top-0 left-0 z-0 -translate-x-4 -translate-y-6 pointer-events-none">
+          <div key={i} className="relative w-full pl-[56px] z-10">
+            {/* The Dot centered on the vertical line */}
+            <div
+              className={`absolute left-[16px] top-[6px] w-4 h-4 rounded-full border-2 border-[#FAFAFA] ${item.bgColor} shadow-sm z-20`}
+            />
+
+            {/* Background Number */}
+            <div className="absolute top-0 left-[36px] z-0 -translate-y-6 pointer-events-none">
               <p
-                className={`font-bold ${item.color} opacity-20 text-[100px] leading-[1] -tracking-[2%] select-none`}
+                className={`font-bold ${item.color} opacity-15 text-[80px] leading-[1] -tracking-[2%] select-none`}
               >
                 {i + 1}
               </p>
             </div>
 
-            <div className="relative z-10">
+            <div className="relative z-10 left-7 -top-4 max-w-[80%]">
               <motion.h3
                 initial="hidden"
                 variants={slideInTop}
                 whileInView="visible"
                 viewport={{ once: true, amount: 0.3, margin: "-40px" }}
                 transition={{ duration: 0.4, ease: "easeOut" }}
-                className="text-[#14120f] font-bold text-xl pt-6"
+                className="text-[#14120f] font-bold text-xl"
               >
                 {item.title}
               </motion.h3>
@@ -231,9 +237,6 @@ export default function DesignProcess() {
               >
                 {item.desc}
               </motion.p>
-              <div
-                className={`w-3 h-3 rounded-full ${item.bgColor} mt-4 shadow-sm relative z-10`}
-              />
             </div>
           </div>
         ))}
