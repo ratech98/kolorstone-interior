@@ -3,6 +3,7 @@ import "./globals.css";
 import { SITE } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
+import SiteNavbar from "@/components/SiteNavbar";
 import { businessSchema, websiteSchema } from "@/lib/schema";
 
 export const viewport: Viewport = {
@@ -75,6 +76,7 @@ export default function RootLayout({
         <a className="absolute -left-[9999px] top-2 z-[200] bg-primary text-white px-4 py-2 focus:left-2" href="#main">
           Skip to content
         </a>
+        <SiteNavbar />
         {children}
         <Reveal />
         <JsonLd data={[businessSchema(), websiteSchema()]} />
