@@ -4,6 +4,7 @@ import { SITE } from "@/lib/site";
 import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import SiteNavbar from "@/components/SiteNavbar";
+import Footer from "@/components/Footer";
 import { businessSchema, websiteSchema } from "@/lib/schema";
 
 export const viewport: Viewport = {
@@ -78,6 +79,7 @@ export default function RootLayout({
         </a>
         <SiteNavbar />
         {children}
+        <Footer />
         <Reveal />
         <JsonLd data={[businessSchema(), websiteSchema()]} />
       </body>

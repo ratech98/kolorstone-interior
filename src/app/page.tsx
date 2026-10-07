@@ -33,7 +33,6 @@ export default function Home() {
         <DesignProcess />
         <Reviews reviews={REVIEWS} />
       </main>
-      <Footer />
         
         {/* OLD PAGE CONTENT COMMENTED OUT BELOW */}
         {/*
