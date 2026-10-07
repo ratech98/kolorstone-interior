@@ -1,46 +1,138 @@
 "use client";
-import { useEffect, useState } from "react";
+import { motion } from "framer-motion";
 import type { Review } from "@/lib/data";
+import { Star } from "lucide-react";
 
 export default function Reviews({ reviews }: { reviews: Review[] }) {
-  const [i, setI] = useState(0);
-  const [per, setPer] = useState(1);
-  const [paused, setPaused] = useState(false);
-  const max = Math.max(0, reviews.length - per);
+  if (!reviews || reviews.length === 0) return null;
 
-  useEffect(() => {
-    const f = () => setPer(window.innerWidth >= 900 ? 2 : 1);
-    f();
-    window.addEventListener("resize", f);
-    return () => window.removeEventListener("resize", f);
-  }, []);
-  const go = (n: number) => setI(n > max ? 0 : n < 0 ? max : n);
-  useEffect(() => {
-    if (paused || reviews.length <= per) return;
-    const t = setInterval(() => setI((c) => (c + 1 > max ? 0 : c + 1)), 6500);
-    return () => clearInterval(t);
-  }, [paused, max, per, reviews.length]);
+  // Split reviews into two rows
+  const mid = Math.ceil(reviews.length / 2);
+  const row1 = reviews.slice(0, mid);
+  const row2 = reviews.slice(mid);
 
-  return (
-    <div className="car" onPointerEnter={() => setPaused(true)}>
-      <div style={{ overflow: "hidden" }}>
-        <div className="track" style={{ transform: `translateX(-${(Math.min(i, max) * 100) / per}%)` }}>
-          {reviews.map((r, k) => (
-            <div className="rev" key={k}>
-              <blockquote>
-                <div className="stars" aria-label={`${r.stars} out of 5 stars`}>{"★".repeat(r.stars)}</div>
-                <q>{r.text}</q>
-                <cite>{r.name}<span>{r.type}</span></cite>
-              </blockquote>
-            </div>
+  const ReviewCard = ({ r }: { r: Review }) => (
+    <div className="w-[350px] md:w-[400px] shrink-0 bg-[#FAFAFA] border border-[#EAEAEA] rounded-3xl p-8 hover:-translate-y-2 hover:shadow-[0_16px_40px_-10px_rgba(0,0,0,0.05)] transition-all duration-300 flex flex-col justify-between group">
+      <div>
+        <div className="flex items-center gap-1 mb-6 text-[#D4AF37]">
+          {[...Array(r.stars || 5)].map((_, idx) => (
+            <Star key={idx} size={18} fill="currentColor" stroke="none" />
           ))}
         </div>
+        <p className="text-[#14120f] text-[16px] leading-relaxed font-medium mb-8 line-clamp-4">
+          "{r.text}"
+        </p>
       </div>
-      <div className="cc">
-        <button aria-label="Previous review" onClick={() => go(i - 1)}>&larr;</button>
-        <button aria-label="Next review" onClick={() => go(i + 1)}>&rarr;</button>
-        <div className="dots">{Array.from({ length: max + 1 }, (_, k) => <i key={k} className={k === i ? "on" : ""} />)}</div>
+      <div className="flex items-center gap-4">
+        <div className="w-12 h-12 rounded-full bg-[#1E1E1E] flex items-center justify-center text-white font-serif text-xl shrink-0">
+          {r.name.charAt(0)}
+        </div>
+        <div>
+          <h4 className="text-[#14120f] font-semibold">{r.name}</h4>
+          <p className="text-[#5E5E5E] text-sm">{r.type || "Client"}</p>
+        </div>
       </div>
     </div>
+  );
+
+  return (
+    <section
+      id="reviews"
+      className="bg-white py-24 relative font-satoshi overflow-hidden"
+    >
+      <style>{`
+        @keyframes marquee {
+          to { transform: translateX(calc(-50% - 12px)); }
+        }
+        .animate-marquee {
+          animation: marquee linear infinite;
+        }
+        .animate-marquee-reverse {
+          animation: marquee linear infinite reverse;
+        }
+        .scroller-track {
+          display: flex;
+          width: max-content;
+          gap: 1.5rem;
+        }
+        /* Desktop: Pause on hover */
+        @media (hover: hover) {
+          .pause-on-hover:hover .scroller-track {
+            animation-play-state: paused;
+          }
+        }
+        
+        /* Mobile/Touch: Pause ONLY while tapping and holding */
+        @media (hover: none) {
+          .pause-on-hover:active .scroller-track {
+            animation-play-state: paused;
+          }
+        }
+      `}</style>
+
+      <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
+        <motion.h2
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6"
+        >
+          What Our Clients Say
+        </motion.h2>
+        <motion.p
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
+          className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light"
+        >
+          Real stories from people who trusted us with their spaces.
+        </motion.p>
+      </div>
+
+      {/* Marquee Container */}
+      <div className="relative w-full flex flex-col gap-6 overflow-hidden pb-8 pause-on-hover">
+        {/* Left/Right Fade Masks */}
+        <div className="absolute inset-y-0 left-0 w-[15%] bg-gradient-to-r from-white to-transparent z-10 pointer-events-none" />
+        <div className="absolute inset-y-0 right-0 w-[15%] bg-gradient-to-l from-white to-transparent z-10 pointer-events-none" />
+
+        {/* Row 1 (Scrolling Left) */}
+        <div
+          className="scroller-track animate-marquee"
+          style={{ animationDuration: `${Math.max(row1.length * 5, 10)}s` }}
+        >
+          <div className="flex gap-6">
+            {row1.map((r, i) => (
+              <ReviewCard key={`r1-a-${i}`} r={r} />
+            ))}
+          </div>
+          <div className="flex gap-6">
+            {row1.map((r, i) => (
+              <ReviewCard key={`r1-b-${i}`} r={r} />
+            ))}
+          </div>
+        </div>
+
+        {/* Row 2 (Scrolling Right) */}
+        {row2.length > 0 && (
+          <div
+            className="scroller-track animate-marquee-reverse ml-[-20%]"
+            style={{ animationDuration: `${Math.max(row2.length * 5, 10)}s` }}
+          >
+            <div className="flex gap-6">
+              {row2.map((r, i) => (
+                <ReviewCard key={`r2-a-${i}`} r={r} />
+              ))}
+            </div>
+            <div className="flex gap-6">
+              {row2.map((r, i) => (
+                <ReviewCard key={`r2-b-${i}`} r={r} />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+    </section>
   );
 }

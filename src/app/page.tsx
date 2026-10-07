@@ -19,7 +19,9 @@ import NewHero from "@/components/NewHero";
 import OurWork from "@/components/OurWork";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import DesignProcess from "@/components/DesignProcess";
+import Reviews from "@/components/Reviews";
 import Footer from "@/components/Footer";
+import { REVIEWS } from "@/lib/data";
 
 export default function Home() {
   return (
@@ -29,6 +31,7 @@ export default function Home() {
         <OurWork />
         <WhyChooseUs />
         <DesignProcess />
+        <Reviews reviews={REVIEWS} />
       </main>
       <Footer />
         

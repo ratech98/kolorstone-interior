@@ -28,7 +28,21 @@ export default function NewHero() {
   }, [isMobileMenuOpen]);
 
   return (
-    <div className="min-h-screen bg-[#f3f3f3] relative font-satoshi flex flex-col items-center pt-8">
+    <div className="min-h-screen bg-[#f3f3f3] relative font-satoshi flex flex-col items-center pt-8 overflow-hidden">
+      {/* Background Architectural Pattern for Right Side */}
+      <div 
+        className="hidden lg:block absolute right-0 top-0 w-[55vw] h-full pointer-events-none opacity-40 z-0" 
+        style={{
+          backgroundImage: "radial-gradient(#3F6A80 1.5px, transparent 1.5px)",
+          backgroundSize: "48px 48px",
+          WebkitMaskImage: "radial-gradient(ellipse at right center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)"
+        }}
+      />
+      
+      {/* Decorative Geometric Elements */}
+      <div className="hidden lg:block absolute right-[-5%] top-[10%] w-[600px] h-[600px] border border-[#3F6A80]/10 rounded-full pointer-events-none z-0" />
+      <div className="hidden lg:block absolute right-[10%] top-[30%] w-[400px] h-[400px] bg-[#3F6A80]/5 rounded-full blur-[100px] pointer-events-none z-0" />
+
       {/* Floating Navbar */}
       <nav
         className={`flex items-center justify-between px-8 py-4 z-50 fixed left-1/2 -translate-x-1/2 transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] border ${
