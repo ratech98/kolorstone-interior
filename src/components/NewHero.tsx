@@ -29,19 +29,94 @@ export default function NewHero() {
 
   return (
     <div className="min-h-screen bg-[#f3f3f3] relative font-satoshi flex flex-col items-center pt-8 overflow-hidden">
-      {/* Background Architectural Pattern for Right Side */}
-      <div 
-        className="hidden lg:block absolute right-0 top-0 w-[55vw] h-full pointer-events-none opacity-40 z-0" 
-        style={{
-          backgroundImage: "radial-gradient(#3F6A80 1.5px, transparent 1.5px)",
-          backgroundSize: "48px 48px",
-          WebkitMaskImage: "radial-gradient(ellipse at right center, rgba(0,0,0,1) 0%, rgba(0,0,0,0) 70%)"
-        }}
-      />
-      
-      {/* Decorative Geometric Elements */}
-      <div className="hidden lg:block absolute right-[-5%] top-[10%] w-[600px] h-[600px] border border-[#3F6A80]/10 rounded-full pointer-events-none z-0" />
-      <div className="hidden lg:block absolute right-[10%] top-[30%] w-[400px] h-[400px] bg-[#3F6A80]/5 rounded-full blur-[100px] pointer-events-none z-0" />
+      {/* 3D Sphere & Atom Animations */}
+      <style>{`
+        @keyframes spin-sphere {
+          0% { transform: rotateX(20deg) rotateY(0deg); }
+          100% { transform: rotateX(20deg) rotateY(360deg); }
+        }
+        @keyframes orbit {
+          0% { transform: rotateZ(0deg); }
+          100% { transform: rotateZ(360deg); }
+        }
+        @keyframes sparkle {
+          0%, 100% { opacity: 0; transform: scale(0.2); box-shadow: none; }
+          10% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 15px #3F6A80; }
+          20% { opacity: 0; transform: scale(0.2); box-shadow: none; }
+        }
+      `}</style>
+
+      {/* Interactive 3D Atom Sphere */}
+      <div
+        className="hidden lg:flex absolute -right-[8%] top-[27%] w-[500px] h-[500px] z-0 items-center justify-center pointer-events-none transition-transform duration-300 ease-out"
+        style={{ perspective: "1000px" }}
+      >
+        <div
+          className="w-full h-full relative origin-center"
+          style={{
+            transformStyle: "preserve-3d",
+            animation: "spin-sphere 25s linear infinite",
+          }}
+        >
+          {/* Orbital Rings */}
+          {[0, 45, 90, 135].map((angle, i) => (
+            <div
+              key={`ring-${i}`}
+              className="absolute inset-0 rounded-full border border-[#3F6A80]/30"
+              style={{
+                transform: `rotateY(${angle}deg)`,
+                transformStyle: "preserve-3d",
+              }}
+            >
+              {/* Orbiting Atom Dot */}
+              <div
+                className="w-full h-full absolute"
+                style={{
+                  animation: `orbit ${6 + i * 1.5}s linear infinite reverse`,
+                }}
+              >
+                <div className="w-[10px] h-[10px] bg-[#3F6A80] rounded-full absolute top-[-5px] left-[50%] -translate-x-1/2 shadow-[0_0_15px_#3F6A80]" />
+              </div>
+            </div>
+          ))}
+
+          {/* Horizontal Equator Ring */}
+          <div
+            className="absolute inset-0 rounded-full border border-[#3F6A80]/30"
+            style={{
+              transform: "rotateX(90deg)",
+              transformStyle: "preserve-3d",
+            }}
+          >
+            <div
+              className="w-full h-full absolute"
+              style={{ animation: "orbit 8s linear infinite" }}
+            >
+              <div className="w-[10px] h-[10px] bg-[#3F6A80] rounded-full absolute top-[-5px] left-[50%] -translate-x-1/2 shadow-[0_0_15px_#3F6A80]" />
+            </div>
+          </div>
+
+          {/* Core Glowing Orb Removed as requested */}
+
+          {/* Random Sparkling 3D Stars */}
+          {[...Array(40)].map((_, i) => {
+            const duration = 5 + ((i * 7) % 8); // Random duration between 5s and 12s
+            const delay = -((i * 13) % 20); // Negative delay scatters starting times seamlessly
+            return (
+              <div
+                key={`sparkle-${i}`}
+                className="absolute w-[4px] h-[4px] bg-[#3F6A80] rounded-full"
+                style={{
+                  left: `${10 + ((i * 29) % 80)}%`,
+                  top: `${10 + ((i * 37) % 80)}%`,
+                  transform: `translateZ(${((i * 53) % 400) - 200}px)`,
+                  animation: `sparkle ${duration}s ease-in-out infinite ${delay}s`,
+                }}
+              />
+            );
+          })}
+        </div>
+      </div>
 
       {/* Floating Navbar */}
       <nav
