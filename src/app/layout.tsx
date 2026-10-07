@@ -5,6 +5,7 @@ import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import SiteNavbar from "@/components/SiteNavbar";
 import Footer from "@/components/Footer";
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 import { businessSchema, websiteSchema } from "@/lib/schema";
 
 export const viewport: Viewport = {
@@ -13,49 +14,9 @@ export const viewport: Viewport = {
   themeColor: "#14120f",
 };
 
-export const metadata: Metadata = {
-  metadataBase: new URL(SITE.url),
-  title: {
-    default: "Interior Designers in Thanjavur, Trichy & Kumbakonam | Kolorstones Home Interiors",
-    template: "%s | Kolorstones Home Interiors",
-  },
-  description: "Kolorstones Home Interiors is a Thanjavur interior design studio for homes, modular kitchens and offices. Serving Thanjavur, Trichy, Kumbakonam, Pattukkottai and nearby towns.",
-  applicationName: SITE.name,
-  keywords: [
-    "interior designers in Thanjavur",
-    "interior designers in Trichy",
-    "interior designers in Kumbakonam",
-    "modular kitchen Thanjavur",
-    "home interiors Thanjavur",
-    "office interior design Trichy",
-    "turnkey interiors Tamil Nadu",
-  ],
-  authors: [{ name: SITE.name }],
-  creator: SITE.name,
-  alternates: { canonical: "/" },
-  openGraph: {
-    type: "website",
-    locale: "en_IN",
-    url: "/",
-    siteName: SITE.name,
-    title: "Interior Designers in Thanjavur, Trichy & Kumbakonam | Kolorstones",
-    description: "Thoughtfully designed interiors that combine functionality, elegance and your personal style.",
-  },
-  twitter: { card: "summary_large_image" },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-      "max-video-preview": -1,
-    },
-  },
-  verification: SITE.gscVerification ? { google: SITE.gscVerification } : undefined,
-  category: "Interior design",
-};
+import { getSEO } from "@/lib/seo";
+
+export const metadata: Metadata = getSEO("default");
 
 export default function RootLayout({
   children,
@@ -81,6 +42,7 @@ export default function RootLayout({
         {children}
         <Footer />
         <Reveal />
+        <GoogleAnalytics />
         <JsonLd data={[businessSchema(), websiteSchema()]} />
       </body>
     </html>

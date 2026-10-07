@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { usePathname } from "next/navigation";
 import { SITE } from "@/lib/site";
+import { trackEvent } from "@/lib/analytics";
 
 export default function ContactForm({ defaultLocation = "" }: { defaultLocation?: string }) {
   const pathname = usePathname();
@@ -45,6 +46,7 @@ export default function ContactForm({ defaultLocation = "" }: { defaultLocation?
       setPhoneValue("");
       setErrors({});
       setState({ kind: "ok", text: "Thank you! Your enquiry has been sent." });
+      trackEvent({ action: "submit", category: "Form", label: "Contact Enquiry Success" });
     } catch {
       setState({ kind: "err", text: "Could not send enquiry. Please try again." });
     } finally {

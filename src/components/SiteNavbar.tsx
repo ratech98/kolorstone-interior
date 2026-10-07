@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import logo from "@/assets/logo.png";
 import { usePathname } from "next/navigation";
+import { trackEvent } from "@/lib/analytics";
 
 export default function SiteNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,7 +43,7 @@ export default function SiteNavbar() {
         }`}
       >
         <div className="flex items-center">
-          <Link href="/">
+          <Link href="/" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Logo Home" })}>
             <Image
               src={logo}
               alt="Kolorstones Logo"
@@ -55,16 +56,16 @@ export default function SiteNavbar() {
 
         {/* Desktop Links */}
         <div className="hidden lg:flex items-center space-x-8 text-[#5E5E5E] font-medium">
-          <Link href="/" className={`${isActive("/") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
+          <Link href="/" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Desktop Home" })} className={`${isActive("/") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
             Home
           </Link>
-          <Link href="/about" className={`${isActive("/about") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
+          <Link href="/about" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Desktop About" })} className={`${isActive("/about") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
             About Us
           </Link>
-          <Link href="/projects" className={`${isActive("/projects") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
+          <Link href="/projects" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Desktop Projects" })} className={`${isActive("/projects") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
             Projects
           </Link>
-          <Link href="/contact" className={`${isActive("/contact") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
+          <Link href="/contact" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Desktop Contact" })} className={`${isActive("/contact") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
             Contact
           </Link>
         </div>
@@ -72,7 +73,7 @@ export default function SiteNavbar() {
         {/* Right Actions */}
         <div className="flex items-center gap-4">
           <div className="hidden md:block">
-            <Link href="/contact">
+            <Link href="/contact" onClick={() => trackEvent({ action: "click", category: "Navigation CTA", label: "Enquiry Now Header" })}>
               <button className="bg-[#3F6A80] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#2e4d5d] transition">
                 Enquiry Now
               </button>
@@ -81,7 +82,10 @@ export default function SiteNavbar() {
 
           <button
             className="lg:hidden p-2 text-[#5E5E5E] hover:text-black transition-colors"
-            onClick={() => setIsMobileMenuOpen(true)}
+            onClick={() => {
+              trackEvent({ action: "open", category: "Mobile Menu", label: "Hamburger Click" });
+              setIsMobileMenuOpen(true);
+            }}
             aria-label="Open Menu"
           >
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
@@ -111,13 +115,13 @@ export default function SiteNavbar() {
             </button>
           </div>
           <div className="flex flex-col gap-6 text-lg font-medium text-[#5E5E5E]">
-            <Link href="/" onClick={() => setIsMobileMenuOpen(false)} className={`${isActive("/") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Home</Link>
-            <Link href="/about" onClick={() => setIsMobileMenuOpen(false)} className={`${isActive("/about") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>About Us</Link>
-            <Link href="/projects" onClick={() => setIsMobileMenuOpen(false)} className={`${isActive("/projects") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Projects</Link>
-            <Link href="/contact" onClick={() => setIsMobileMenuOpen(false)} className={`${isActive("/contact") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Contact</Link>
+            <Link href="/" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile Home" }); setIsMobileMenuOpen(false); }} className={`${isActive("/") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Home</Link>
+            <Link href="/about" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile About Us" }); setIsMobileMenuOpen(false); }} className={`${isActive("/about") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>About Us</Link>
+            <Link href="/projects" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile Projects" }); setIsMobileMenuOpen(false); }} className={`${isActive("/projects") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Projects</Link>
+            <Link href="/contact" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile Contact" }); setIsMobileMenuOpen(false); }} className={`${isActive("/contact") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Contact</Link>
           </div>
           <div className="mt-auto md:hidden">
-            <Link href="/contact">
+            <Link href="/contact" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Enquiry Now Mobile" }); setIsMobileMenuOpen(false); }}>
               <button className="w-full bg-[#3F6A80] text-white px-6 py-3.5 rounded-full text-sm font-medium hover:bg-[#2e4d5d] transition">
                 Enquiry Now
               </button>

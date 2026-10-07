@@ -5,6 +5,7 @@ import Image from "next/image";
 import heroImg from "@/assets/hero_img1.png";
 import heroMobileImg from "@/assets/hero_mobile_img.png";
 import logo from "@/assets/logo.png";
+import { trackEvent } from "@/lib/analytics";
 
 export default function NewHero() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -152,13 +153,17 @@ export default function NewHero() {
             Thoughtfully designed interiors that combine functionality,
             elegance, and your personal style.
           </p>
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <button className="bg-[#3F6A80] text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-[#2e4d5d] transition w-full sm:w-auto">
-              VIEW OUR WORK
-            </button>
-            <button className="border border-[#3F6A80] text-[#3F6A80] px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-[#3F6A80] hover:text-white transition w-full sm:w-auto">
-              ENQUIRY NOW
-            </button>
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto z-10 relative">
+            <Link href="/projects" onClick={() => trackEvent({ action: "click", category: "Hero CTA", label: "View Our Work" })} className="w-full sm:w-auto">
+              <button className="bg-[#3F6A80] text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-[#2e4d5d] transition w-full">
+                VIEW OUR WORK
+              </button>
+            </Link>
+            <Link href="/contact" onClick={() => trackEvent({ action: "click", category: "Hero CTA", label: "Enquiry Now" })} className="w-full sm:w-auto">
+              <button className="border border-[#3F6A80] text-[#3F6A80] px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-[#3F6A80] hover:text-white transition w-full">
+                ENQUIRY NOW
+              </button>
+            </Link>
           </div>
         </div>
       </div>

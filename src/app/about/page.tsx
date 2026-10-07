@@ -1,8 +1,12 @@
-"use client";
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
+import type { Metadata } from "next";
+
+import { getSEO } from "@/lib/seo";
+
+export const metadata: Metadata = getSEO("about");
 
 export default function AboutPage() {
   const heroImage = PROJECTS[0].imgs[1] || PROJECTS[0].imgs[0];

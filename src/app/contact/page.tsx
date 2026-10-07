@@ -1,33 +1,14 @@
-"use client";
-import React, { useState, useEffect } from "react";
-import Link from "next/link";
-import Image from "next/image";
+import React from "react";
 import ContactForm from "@/components/ContactForm";
-import Footer from "@/components/Footer";
-import logo from "@/assets/logo.png";
 import { SITE, fullAddress } from "@/lib/site";
 import { MapPin, Phone, Clock } from "lucide-react";
+import type { Metadata } from "next";
+
+import { getSEO } from "@/lib/seo";
+
+export const metadata: Metadata = getSEO("contact");
 
 export default function ContactPage() {
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
-    };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  // Prevent scrolling when sidebar is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "";
-    }
-  }, [isMobileMenuOpen]);
 
   return (
     <main className="min-h-screen bg-[#f3f3f3] font-satoshi flex flex-col relative overflow-x-hidden">
