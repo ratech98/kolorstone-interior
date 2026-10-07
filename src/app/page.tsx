@@ -19,6 +19,7 @@ import NewHero from "@/components/NewHero";
 import OurWork from "@/components/OurWork";
 import WhyChooseUs from "@/components/WhyChooseUs";
 import DesignProcess from "@/components/DesignProcess";
+import Footer from "@/components/Footer";
 
 export default function Home() {
   return (
@@ -28,6 +29,8 @@ export default function Home() {
         <OurWork />
         <WhyChooseUs />
         <DesignProcess />
+      </main>
+      <Footer />
         
         {/* OLD PAGE CONTENT COMMENTED OUT BELOW */}
         {/*
@@ -71,7 +74,6 @@ export default function Home() {
         <ContactSection />
         <Footer />
         */}
-      </main>
     </>
   );
 }
