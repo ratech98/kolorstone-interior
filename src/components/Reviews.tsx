@@ -12,7 +12,7 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
   const row2 = reviews.slice(mid);
 
   const ReviewCard = ({ r }: { r: Review }) => (
-    <div className="w-[350px] md:w-[400px] shrink-0 bg-[#FAFAFA] border border-[#EAEAEA] rounded-3xl p-8 hover:-translate-y-2 hover:shadow-[0_16px_40px_-10px_rgba(0,0,0,0.05)] transition-all duration-300 flex flex-col justify-between group">
+    <div className="w-[350px] md:w-[400px] shrink-0 bg-[#FAFAFA] border border-[#EAEAEA] rounded-3xl p-8  hover:shadow-[0_16px_40px_-10px_rgba(0,0,0,0.05)] transition-all duration-300 flex flex-col justify-between group">
       <div>
         <div className="flex items-center gap-1 mb-6 text-[#D4AF37]">
           {[...Array(r.stars || 5)].map((_, idx) => (
