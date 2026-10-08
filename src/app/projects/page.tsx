@@ -1,6 +1,6 @@
 import React from "react";
 import { PROJECTS } from "@/lib/data";
-import ProjectCard from "@/components/ProjectCard";
+import ProjectsLayout from "@/components/ProjectsLayout";
 import type { Metadata } from "next";
 
 import { getSEO } from "@/lib/seo";
@@ -23,12 +23,8 @@ export default function ProjectsPage() {
           </p>
         </div>
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:gap-12">
-          {PROJECTS.map((project, idx) => (
-            <ProjectCard key={idx} project={project} />
-          ))}
-        </div>
+        {/* Projects Grid/Stack */}
+        <ProjectsLayout projects={PROJECTS} />
       </div>
     </main>
   );
