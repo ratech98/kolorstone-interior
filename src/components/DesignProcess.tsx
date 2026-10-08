@@ -1,6 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import { motion, useInView } from "framer-motion";
+import { motion, useInView, useScroll, useTransform } from "framer-motion";
 
 const processSteps = [
   {
@@ -72,6 +72,12 @@ export default function DesignProcess() {
   const [isAnimated, setIsAnimated] = useState(false);
   const svgRef = useRef(null);
   const isInView = useInView(svgRef, { once: true, amount: 0.3 });
+
+  const mobileContainerRef = useRef(null);
+  const { scrollYProgress: mobileScrollYProgress } = useScroll({
+    target: mobileContainerRef,
+    offset: ["start center", "end center"],
+  });
 
   useEffect(() => {
     if (isInView && !isAnimated) {
@@ -195,50 +201,69 @@ export default function DesignProcess() {
       </div>
 
       {/* mobile and tab ui */}
-      <div className="lg:hidden flex flex-col gap-12 w-full mt-8 relative">
-        {/* Vertical Connecting Line */}
-        <div className="absolute left-[23px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#464CC8] via-[#009987] to-[#BFD146] opacity-30 z-0"></div>
+      <div
+        ref={mobileContainerRef}
+        className="lg:hidden flex flex-col gap-6 sm:gap-8 w-full mt-10 relative"
+      >
+        {/* Background faded line */}
+        <div className="absolute left-[23px] top-8 bottom-8 w-[2px] bg-gray-200 z-0 rounded-full"></div>
+
+        {/* Animated active line */}
+        <motion.div
+          className="absolute left-[23px] top-8 bottom-8 w-[2px] bg-gradient-to-b from-[#464CC8] via-[#009987] to-[#BFD146] z-0 rounded-full origin-top"
+          style={{ scaleY: mobileScrollYProgress }}
+        />
 
         {processSteps.map((item, i) => (
-          <div key={i} className="relative w-full pl-[56px] z-10">
+          <motion.div
+            key={i}
+            className="relative w-full pl-[56px] z-10"
+            initial="inactive"
+            whileInView="active"
+            viewport={{ margin: "-40% 0px -40% 0px" }} // Active only in the middle of the screen
+          >
             {/* The Dot centered on the vertical line */}
-            <div
-              className={`absolute left-[16px] top-[6px] w-4 h-4 rounded-full border-2 border-[#FAFAFA] ${item.bgColor} shadow-sm z-20`}
+            <motion.div
+              variants={{
+                inactive: { scale: 0.8, opacity: 0.3 },
+                active: { scale: 1.3, opacity: 1 },
+              }}
+              transition={{ duration: 0.3 }}
+              className={`absolute left-[15px] top-[32px] w-[18px] h-[18px] rounded-full border-4 border-[#FAFAFA] ${item.bgColor} shadow-sm z-20`}
             />
 
-            {/* Background Number */}
-            <div className="absolute top-0 left-[36px] z-0 -translate-y-6 pointer-events-none">
-              <p
-                className={`font-bold ${item.color} opacity-15 text-[80px] leading-[1] -tracking-[2%] select-none`}
-              >
-                {i + 1}
-              </p>
-            </div>
+            <motion.div
+              variants={{
+                inactive: { opacity: 0.4, scale: 0.95 },
+                active: { opacity: 1, scale: 1 },
+              }}
+              transition={{ duration: 0.4, ease: "easeOut" }}
+              className="relative w-full bg-white rounded-2xl p-6 shadow-[0_8px_30px_rgb(0,0,0,0.06)] border border-gray-50 overflow-hidden"
+            >
+              {/* Background Number overlay */}
+              <div className="absolute -right-4 -top-6 z-0 pointer-events-none opacity-[0.07]">
+                <p
+                  className={`font-black ${item.color} text-[140px] leading-none select-none`}
+                >
+                  {i + 1}
+                </p>
+              </div>
 
-            <div className="relative z-10 left-7 -top-4 max-w-[80%]">
-              <motion.h3
-                initial="hidden"
-                variants={slideInTop}
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3, margin: "-40px" }}
-                transition={{ duration: 0.4, ease: "easeOut" }}
-                className="text-[#14120f] font-bold text-xl"
-              >
-                {item.title}
-              </motion.h3>
-
-              <motion.p
-                initial="hidden"
-                variants={slideInTop}
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3, margin: "-40px" }}
-                transition={{ duration: 0.6, ease: "easeOut" }}
-                className="text-[#5E5E5E] leading-relaxed mt-2"
-              >
-                {item.desc}
-              </motion.p>
-            </div>
-          </div>
+              <div className="relative z-10">
+                <span
+                  className={`inline-block text-xs font-bold uppercase tracking-wider ${item.color} mb-2`}
+                >
+                  Step 0{i + 1}
+                </span>
+                <h3 className="text-[#14120f] font-bold text-xl mb-2">
+                  {item.title}
+                </h3>
+                <p className="text-[#5E5E5E] text-sm sm:text-base leading-relaxed">
+                  {item.desc}
+                </p>
+              </div>
+            </motion.div>
+          </motion.div>
         ))}
       </div>
     </div>
