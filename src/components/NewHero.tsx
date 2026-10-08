@@ -31,7 +31,7 @@ export default function NewHero() {
   return (
     <div className="lg:min-h-screen md:min-h-[50vh] bg-[#f3f3f3] relative font-satoshi flex flex-col items-center pt-0 lg:pt-8 overflow-hidden">
       {/* 3D Sphere & Atom Animations */}
-      <style>{`
+      <style dangerouslySetInnerHTML={{ __html: `
         @keyframes spin-sphere {
           0% { transform: rotateX(20deg) rotateY(0deg); }
           100% { transform: rotateX(20deg) rotateY(360deg); }
@@ -45,7 +45,7 @@ export default function NewHero() {
           10% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 15px #3F6A80; }
           20% { opacity: 0; transform: scale(0.2); box-shadow: none; }
         }
-      `}</style>
+      `}} />
 
       {/* Interactive 3D Atom Sphere */}
       <div
