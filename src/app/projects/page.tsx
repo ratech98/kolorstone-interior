@@ -1,6 +1,7 @@
 import React from "react";
 import { PROJECTS } from "@/lib/data";
 import ProjectsLayout from "@/components/ProjectsLayout";
+import AnimatedText from "@/components/AnimatedText";
 import type { Metadata } from "next";
 
 import { getSEO } from "@/lib/seo";
@@ -13,14 +14,18 @@ export default function ProjectsPage() {
       <div className="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-16 pb-24">
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16 md:mb-24">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#14120f] mb-6">
-            Our Portfolio
-          </h1>
-          <p className="text-lg text-[#5E5E5E] leading-relaxed">
-            Explore our diverse range of interior design projects across
-            residential, commercial, and luxury spaces. Every project reflects
-            our commitment to quality, functionality, and beauty.
-          </p>
+          <AnimatedText>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#14120f] mb-6">
+              Our Portfolio
+            </h1>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg text-[#5E5E5E] leading-relaxed">
+              Explore our diverse range of interior design projects across
+              residential, commercial, and luxury spaces. Every project reflects
+              our commitment to quality, functionality, and beauty.
+            </p>
+          </AnimatedText>
         </div>
 
         {/* Projects Grid/Stack */}

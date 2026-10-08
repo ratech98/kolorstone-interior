@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Faq from "@/components/Faq";
+import AnimatedText from "@/components/AnimatedText";
 import JsonLd from "@/components/JsonLd";
 import ProjectGallery from "@/components/ProjectGallery";
 import { ContactSection, ProcessSection } from "@/components/Sections";
@@ -78,45 +79,61 @@ export default async function CityPage({ params }: Props) {
       <Nav alwaysSolid />
       <main id="main">
         <header className="phero">
-          <p className="crumbs">
-            <Link href="/">Home</Link>
-            <span>/</span>Interior designers<span>/</span>
-            {l.name}
-          </p>
-          <h1>{`Interior Designers in ${l.name}`}</h1>
-          <p>{l.intro}</p>
-          <div className="ctas">
-            <Link href="#contact" className="btn fill">
-              Get a Free Consultation
-            </Link>
-            <a
-              href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(`Hi, I am looking for interior design services in ${l.name}.`)}`}
-              className="btn"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              WhatsApp Us
-            </a>
-          </div>
+          <AnimatedText>
+            <p className="crumbs">
+              <Link href="/">Home</Link>
+              <span>/</span>Interior designers<span>/</span>
+              {l.name}
+            </p>
+          </AnimatedText>
+          <AnimatedText delay={0.1}>
+            <h1>{`Interior Designers in ${l.name}`}</h1>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p>{l.intro}</p>
+          </AnimatedText>
+          <AnimatedText delay={0.3}>
+            <div className="ctas">
+              <Link href="#contact" className="btn fill">
+                Get a Free Consultation
+              </Link>
+              <a
+                href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(`Hi, I am looking for interior design services in ${l.name}.`)}`}
+                className="btn"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                WhatsApp Us
+              </a>
+            </div>
+          </AnimatedText>
         </header>
 
         <section>
           <div className="wrap prose">
-            <h2 className="rv">
-              Interior design for {l.name} homes and businesses
-            </h2>
-            <p className="rv">{l.context}</p>
-            <p className="rv">
-              Every project begins with listening: how you live, how you work,
-              and what you want the space to feel like. Then we plan, design and
-              execute so that you deal with one team from start to finish.
-            </p>
+            <AnimatedText>
+              <h2>
+                Interior design for {l.name} homes and businesses
+              </h2>
+            </AnimatedText>
+            <AnimatedText delay={0.2}>
+              <p>{l.context}</p>
+            </AnimatedText>
+            <AnimatedText delay={0.3}>
+              <p>
+                Every project begins with listening: how you live, how you work,
+                and what you want the space to feel like. Then we plan, design and
+                execute so that you deal with one team from start to finish.
+              </p>
+            </AnimatedText>
           </div>
         </section>
 
         <section className="sec-sand">
           <div className="wrap">
-            <h2 className="rv">What we do in {l.name}</h2>
+            <AnimatedText>
+              <h2>What we do in {l.name}</h2>
+            </AnimatedText>
             <div className="svc">
               {SERVICES.map((s) => (
                 <Link key={s.slug} href={`/services/${s.slug}`} className="rv">
@@ -126,9 +143,11 @@ export default async function CityPage({ params }: Props) {
                 </Link>
               ))}
             </div>
-            <h3 className="rv" style={{ fontSize: "1.8rem", marginTop: 56 }}>
-              Areas we cover
-            </h3>
+            <AnimatedText>
+              <h3 style={{ fontSize: "1.8rem", marginTop: 56 }}>
+                Areas we cover
+              </h3>
+            </AnimatedText>
             <ul className="chips">
               {l.areas.map((a) => (
                 <li key={a}>{a}</li>
@@ -139,10 +158,14 @@ export default async function CityPage({ params }: Props) {
 
         <section>
           <div className="wrap">
-            <h2 className="rv">Recent projects</h2>
-            <p className="lead rv">
-              A look at how we approach living spaces, kitchens and workplaces.
-            </p>
+            <AnimatedText>
+              <h2>Recent projects</h2>
+            </AnimatedText>
+            <AnimatedText delay={0.2}>
+              <p className="lead">
+                A look at how we approach living spaces, kitchens and workplaces.
+              </p>
+            </AnimatedText>
             <ProjectGallery projects={projects} compact />
           </div>
         </section>
@@ -152,7 +175,9 @@ export default async function CityPage({ params }: Props) {
 
         <section className="sec-sand">
           <div className="wrap">
-            <h2 className="rv">Also serving nearby</h2>
+            <AnimatedText>
+              <h2>Also serving nearby</h2>
+            </AnimatedText>
             <ul className="chips">
               {nearby.map((n) => (
                 <li key={n.slug}>

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import AnimatedText from "./AnimatedText";
 import Image from "next/image";
 import { WHY, STEPS, INSTA } from "@/lib/data";
 import { SERVICES } from "@/lib/services";
@@ -15,14 +16,17 @@ export function ServicesSection() {
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16 md:mb-24 max-w-2xl mx-auto text-center">
-          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
-            Interior Design Services
-          </h2>
-          <p
-          className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
-            Everything you need to turn an empty or tired space into a home or
-            workplace you love.
-          </p>
+          <AnimatedText>
+            <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl text-white mb-6 tracking-tight">
+              Interior Design Services
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+              Everything you need to turn an empty or tired space into a home or
+              workplace you love.
+            </p>
+          </AnimatedText>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {SERVICES.map((s) => (
@@ -59,13 +63,17 @@ export function AreasSection() {
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16 md:mb-20 max-w-3xl">
-          <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 tracking-tight text-ink">
-            Interior Designers in Thanjavur, Trichy &amp; Nearby
-          </h2>
-          <p className="text-lg md:text-xl text-ink/70 font-light leading-relaxed">
-            Our studio is in Nanjikottai, Thanjavur. We design and execute
-            interiors across the Delta region and central Tamil Nadu.
-          </p>
+          <AnimatedText>
+            <h2 className="font-serif text-4xl md:text-5xl lg:text-6xl mb-6 tracking-tight text-ink">
+              Interior Designers in Thanjavur, Trichy &amp; Nearby
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg md:text-xl text-ink/70 font-light leading-relaxed">
+              Our studio is in Nanjikottai, Thanjavur. We design and execute
+              interiors across the Delta region and central Tamil Nadu.
+            </p>
+          </AnimatedText>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {LOCATIONS.map((l) => (
@@ -97,12 +105,16 @@ export function WhySection() {
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8">
           <div className="max-w-2xl">
-            <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-tight">
-              Why Choose Us
-            </h2>
-            <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed">
-              We bring craftsmanship, transparency, and a tailored approach to every single project we take on.
-            </p>
+            <AnimatedText>
+              <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-tight">
+                Why Choose Us
+              </h2>
+            </AnimatedText>
+            <AnimatedText delay={0.2}>
+              <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed">
+                We bring craftsmanship, transparency, and a tailored approach to every single project we take on.
+              </p>
+            </AnimatedText>
           </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-x-12 gap-y-16 border-t border-white/10 pt-16">
@@ -139,12 +151,16 @@ export function ProcessSection() {
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-16 md:mb-24 max-w-2xl">
-          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-tight">
-            Our Design Process
-          </h2>
-          <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
-            Six clear steps from first conversation to the day you move in.
-          </p>
+          <AnimatedText>
+            <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-tight">
+              Our Design Process
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg md:text-xl text-white/70 font-light leading-relaxed">
+              Six clear steps from first conversation to the day you move in.
+            </p>
+          </AnimatedText>
         </div>
 
         <div className="relative mt-16 md:mt-24">
@@ -183,12 +199,16 @@ export function InstagramSection() {
     >
       <div className="max-w-[1400px] mx-auto">
         <div className="mb-12 md:mb-16 max-w-2xl mx-auto">
-          <h2 className="font-serif text-4xl md:text-6xl text-ink mb-6">
-            Follow Our Work
-          </h2>
-          <p className="text-lg text-ink/70 font-light">
-            New projects, site progress and design ideas, shared regularly.
-          </p>
+          <AnimatedText>
+            <h2 className="font-serif text-4xl md:text-6xl text-ink mb-6">
+              Follow Our Work
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg text-ink/70 font-light">
+              New projects, site progress and design ideas, shared regularly.
+            </p>
+          </AnimatedText>
         </div>
 
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 md:gap-6 mb-12">
@@ -254,13 +274,17 @@ export function ContactSection({
     >
       <div className="max-w-[1400px] mx-auto grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-16 lg:gap-24 items-start">
         <div className="max-w-xl">
-          <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-tight leading-tight">
-            {title}
-          </h2>
-          <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed">
-            Have a project in mind? Tell us about your space and we&apos;ll get
-            in touch with you.
-          </p>
+          <AnimatedText>
+            <h2 className="font-serif text-4xl md:text-6xl lg:text-7xl mb-6 tracking-tight leading-tight">
+              {title}
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg md:text-xl text-white/60 font-light leading-relaxed">
+              Have a project in mind? Tell us about your space and we&apos;ll get
+              in touch with you.
+            </p>
+          </AnimatedText>
         </div>
         <ContactForm defaultLocation={defaultLocation} />
       </div>

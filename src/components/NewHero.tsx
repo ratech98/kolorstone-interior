@@ -6,6 +6,7 @@ import heroImg from "@/assets/hero_img1.png";
 import heroMobileImg from "@/assets/hero_mobile_img.png";
 import logo from "@/assets/logo.png";
 import { trackEvent } from "@/lib/analytics";
+import AnimatedText from "./AnimatedText";
 
 export default function NewHero() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -147,46 +148,52 @@ export default function NewHero() {
 
         {/* Right Side: Typography */}
         <div className="w-full lg:w-1/2 flex flex-col justify-end lg:justify-center items-center lg:items-start text-center lg:text-left relative z-10 px-6 h-full mt-auto lg:mt-0">
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white lg:text-black leading-[1.1] mb-6 drop-shadow-lg lg:drop-shadow-none">
-            Spaces Designed To <br className="hidden lg:block" /> Feel Like
-            Home.
-          </h1>
-          <p className="text-white/90 lg:text-[#5E5E5E] text-base md:text-lg mb-10 max-w-lg leading-relaxed drop-shadow-md lg:drop-shadow-none">
-            Thoughtfully designed interiors that combine functionality,
-            elegance, and your personal style.
-          </p>
-          <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-            <Link
-              href="/projects"
-              onClick={() =>
-                trackEvent({
-                  action: "click",
-                  category: "Hero CTA",
-                  label: "View Our Work",
-                })
-              }
-              className="w-full sm:w-auto"
-            >
-              <button className="bg-[#3F6A80] text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-[#2e4d5d] transition w-full shadow-lg lg:shadow-none">
-                VIEW OUR WORK
-              </button>
-            </Link>
-            <Link
-              href="/contact"
-              onClick={() =>
-                trackEvent({
-                  action: "click",
-                  category: "Hero CTA",
-                  label: "Enquiry Now",
-                })
-              }
-              className="w-full sm:w-auto"
-            >
-              <button className="border border-white lg:border-[#3F6A80] text-white lg:text-[#3F6A80] bg-white/10 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-[#3F6A80] transition w-full shadow-lg lg:shadow-none">
-                ENQUIRY NOW
-              </button>
-            </Link>
-          </div>
+          <AnimatedText animateOnLoad={true}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white lg:text-black leading-[1.1] mb-6 drop-shadow-lg lg:drop-shadow-none">
+              Spaces Designed To <br className="hidden lg:block" /> Feel Like
+              Home.
+            </h1>
+          </AnimatedText>
+          <AnimatedText animateOnLoad={true} delay={0.2}>
+            <p className="text-white/90 lg:text-[#5E5E5E] text-base md:text-lg mb-10 max-w-lg leading-relaxed drop-shadow-md lg:drop-shadow-none">
+              Thoughtfully designed interiors that combine functionality,
+              elegance, and your personal style.
+            </p>
+          </AnimatedText>
+          <AnimatedText animateOnLoad={true} delay={0.4} className="w-full sm:w-auto">
+            <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
+              <Link
+                href="/projects"
+                onClick={() =>
+                  trackEvent({
+                    action: "click",
+                    category: "Hero CTA",
+                    label: "View Our Work",
+                  })
+                }
+                className="w-full sm:w-auto"
+              >
+                <button className="bg-[#3F6A80] text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-[#2e4d5d] transition w-full shadow-lg lg:shadow-none">
+                  VIEW OUR WORK
+                </button>
+              </Link>
+              <Link
+                href="/contact"
+                onClick={() =>
+                  trackEvent({
+                    action: "click",
+                    category: "Hero CTA",
+                    label: "Enquiry Now",
+                  })
+                }
+                className="w-full sm:w-auto"
+              >
+                <button className="border border-white lg:border-[#3F6A80] text-white lg:text-[#3F6A80] bg-white/10 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-[#3F6A80] transition w-full shadow-lg lg:shadow-none">
+                  ENQUIRY NOW
+                </button>
+              </Link>
+            </div>
+          </AnimatedText>
         </div>
       </div>
     </div>

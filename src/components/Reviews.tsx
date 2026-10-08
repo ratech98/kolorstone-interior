@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import type { Review } from "@/lib/data";
 import { Star } from "lucide-react";
+import AnimatedText from "@/components/AnimatedText";
 
 export default function Reviews({ reviews }: { reviews: Review[] }) {
   if (!reviews || reviews.length === 0) return null;
@@ -71,24 +72,16 @@ export default function Reviews({ reviews }: { reviews: Review[] }) {
       `}</style>
 
       <div className="max-w-7xl mx-auto px-6 mb-16 text-center">
-        <motion.h2
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut" }}
-          className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6"
-        >
-          What Our Clients Say
-        </motion.h2>
-        <motion.p
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-100px" }}
-          transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-          className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light"
-        >
-          Real stories from people who trusted us with their spaces.
-        </motion.p>
+        <AnimatedText>
+          <h2 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6">
+            What Our Clients Say
+          </h2>
+        </AnimatedText>
+        <AnimatedText delay={0.2}>
+          <p className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light">
+            Real stories from people who trusted us with their spaces.
+          </p>
+        </AnimatedText>
       </div>
 
       {/* Marquee Container */}

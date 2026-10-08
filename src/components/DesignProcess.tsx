@@ -1,6 +1,7 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import AnimatedText from "@/components/AnimatedText";
 
 const processSteps = [
   {
@@ -90,28 +91,18 @@ export default function DesignProcess() {
       {/* top */}
       <div className="w-full max-w-[1200px]">
         <div className="text-center">
-          <motion.h2
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3, margin: "-100px" }}
-            variants={slideInTop}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6"
-          >
-            Our Design Process
-          </motion.h2>
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, amount: 0.3, margin: "-100px" }}
-            variants={slideInTop}
-            transition={{ duration: 0.6, ease: "easeOut", delay: 0.1 }}
-            className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed"
-          >
-            A seamless, transparent journey from your first idea to the final
-            handover. We guide you through every step of creating your perfect
-            space.
-          </motion.p>
+          <AnimatedText>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6">
+              Our Design Process
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light leading-relaxed">
+              A seamless, transparent journey from your first idea to the final
+              handover. We guide you through every step of creating your perfect
+              space.
+            </p>
+          </AnimatedText>
         </div>
       </div>
 

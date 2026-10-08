@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import Nav from "@/components/Nav";
 import Footer from "@/components/Footer";
 import Faq from "@/components/Faq";
+import AnimatedText from "@/components/AnimatedText";
 import JsonLd from "@/components/JsonLd";
 import { ContactSection, ProcessSection } from "@/components/Sections";
 import { SERVICES, getService } from "@/lib/services";
@@ -40,29 +41,43 @@ export default async function ServicePage({ params }: Props) {
       <Nav alwaysSolid />
       <main id="main">
         <header className="phero">
-          <p className="crumbs"><Link href="/">Home</Link><span>/</span>Services<span>/</span>{s.name}</p>
-          <h1>{`${s.title} in Thanjavur & Trichy`}</h1>
-          <p>{s.intro}</p>
-          <div className="ctas">
-            <Link href="#contact" className="btn fill">Get a Free Consultation</Link>
-            <a href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(`Hi, I would like to know about ${s.name.toLowerCase()}.`)}`} className="btn" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
-          </div>
+          <AnimatedText>
+            <p className="crumbs"><Link href="/">Home</Link><span>/</span>Services<span>/</span>{s.name}</p>
+          </AnimatedText>
+          <AnimatedText delay={0.1}>
+            <h1>{`${s.title} in Thanjavur & Trichy`}</h1>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p>{s.intro}</p>
+          </AnimatedText>
+          <AnimatedText delay={0.3}>
+            <div className="ctas">
+              <Link href="#contact" className="btn fill">Get a Free Consultation</Link>
+              <a href={`https://wa.me/${SITE.whatsapp}?text=${encodeURIComponent(`Hi, I would like to know about ${s.name.toLowerCase()}.`)}`} className="btn" target="_blank" rel="noopener noreferrer">WhatsApp Us</a>
+            </div>
+          </AnimatedText>
         </header>
 
         <section><div className="wrap prose">
-          <h2 className="rv">What&apos;s included</h2>
-          <ul className="ticks">{s.includes.map((i) => <li className="rv" key={i}>{i}</li>)}</ul>
+          <AnimatedText>
+            <h2>What&apos;s included</h2>
+          </AnimatedText>
+          <ul className="ticks">{s.includes.map((i) => <li key={i}>{i}</li>)}</ul>
         </div></section>
 
         <ProcessSection />
         <Faq faqs={s.faqs} title={`${s.name}: FAQ`} />
 
         <section className="sec-sand"><div className="wrap">
-          <h2 className="rv">{s.name} across our service area</h2>
+          <AnimatedText>
+            <h2>{s.name} across our service area</h2>
+          </AnimatedText>
           <ul className="chips">
             {LOCATIONS.map((l) => <li key={l.slug}><Link href={`/interior-designers/${l.slug}`}>{l.name}</Link></li>)}
           </ul>
-          <h3 className="rv" style={{ fontSize: "1.8rem", marginTop: 56 }}>Other services</h3>
+          <AnimatedText>
+            <h3 style={{ fontSize: "1.8rem", marginTop: 56 }}>Other services</h3>
+          </AnimatedText>
           <ul className="chips">
             {others.map((o) => <li key={o.slug}><Link href={`/services/${o.slug}`}>{o.name}</Link></li>)}
           </ul>

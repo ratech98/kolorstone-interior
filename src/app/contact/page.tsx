@@ -1,5 +1,6 @@
 import React from "react";
 import ContactForm from "@/components/ContactForm";
+import AnimatedText from "@/components/AnimatedText";
 import { SITE, fullAddress } from "@/lib/site";
 import { MapPin, Phone, Clock } from "lucide-react";
 import type { Metadata } from "next";
@@ -14,16 +15,19 @@ export default function ContactPage() {
     <main className="min-h-screen bg-[#f3f3f3] font-satoshi flex flex-col relative overflow-x-hidden">
       
 
-
       {/* Main Content */}
       <div className="flex-grow pt-40 pb-20 px-6 lg:px-16 w-full max-w-7xl mx-auto z-10">
         
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6">Let's build something beautiful</h1>
-          <p className="text-lg text-[#5E5E5E] leading-relaxed">
-            Ready to transform your space? From modular kitchens to full turnkey interiors, our expert design team is here to bring your vision to life.
-          </p>
+          <AnimatedText>
+            <h1 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6">Let's build something beautiful</h1>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg text-[#5E5E5E] leading-relaxed">
+              Ready to transform your space? From modular kitchens to full turnkey interiors, our expert design team is here to bring your vision to life.
+            </p>
+          </AnimatedText>
         </div>
 
         {/* 2-Column Layout */}

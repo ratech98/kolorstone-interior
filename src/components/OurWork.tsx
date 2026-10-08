@@ -2,6 +2,7 @@
 import React, { useRef } from "react";
 import { PROJECTS } from "@/lib/data";
 import { useScroll } from "framer-motion";
+import AnimatedText from "./AnimatedText";
 import SlideshowGridItem from "./SlideshowGridItem";
 import MobileWorkCard from "./MobileWorkCard";
 
@@ -22,12 +23,16 @@ export default function OurWork() {
     <section className="bg-[#FAFAFA] relative font-satoshi py-16 lg:py-24" id="work">
       <div className="max-w-7xl mx-auto px-6 mb-8 sm:mb-12 lg:mb-16">
         <div className="text-center">
-          <h2 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-4 lg:mb-6">
-            Our Work
-          </h2>
-          <p className="text-[#5E5E5E] text-base md:text-xl max-w-2xl mx-auto font-light">
-            Homes, kitchens and workplaces designed around the people who use them.
-          </p>
+          <AnimatedText>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-4 lg:mb-6">
+              Our Work
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-[#5E5E5E] text-base md:text-xl max-w-2xl mx-auto font-light">
+              Homes, kitchens and workplaces designed around the people who use them.
+            </p>
+          </AnimatedText>
         </div>
       </div>
 

@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { PROJECTS } from "@/lib/data";
+import AnimatedText from "@/components/AnimatedText";
 import type { Metadata } from "next";
 
 import { getSEO } from "@/lib/seo";
@@ -18,25 +19,33 @@ export default function AboutPage() {
       <section className="w-full max-w-7xl mx-auto px-6 lg:px-16 mb-24">
         <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
           <div className="w-full lg:w-1/2 flex flex-col gap-6">
-            <div className="inline-block px-4 py-1.5 rounded-full bg-[#3F6A80]/10 text-[#3F6A80] text-sm font-semibold tracking-wider uppercase self-start">
-              Our Story
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#14120f] leading-tight">
-              Designing Spaces,<br/> Building Lifestyles
-            </h1>
-            <p className="text-lg text-[#5E5E5E] leading-relaxed">
-              At Kolorstones Home Interiors, we believe that your home should be a reflection of who you are. Located in the heart of Thanjavur, we specialize in creating elegant, functional, and highly personalized spaces that elevate everyday living.
-            </p>
-            <div className="pt-4 flex gap-8">
-              <div>
-                <h4 className="text-3xl font-serif text-[#3F6A80]">150+</h4>
-                <p className="text-[#5E5E5E] text-sm mt-1 uppercase tracking-wide">Projects Delivered</p>
+            <AnimatedText animateOnLoad={true}>
+              <div className="inline-block px-4 py-1.5 rounded-full bg-[#3F6A80]/10 text-[#3F6A80] text-sm font-semibold tracking-wider uppercase self-start">
+                Our Story
               </div>
-              <div>
-                <h4 className="text-3xl font-serif text-[#3F6A80]">100%</h4>
-                <p className="text-[#5E5E5E] text-sm mt-1 uppercase tracking-wide">Client Satisfaction</p>
+            </AnimatedText>
+            <AnimatedText animateOnLoad={true} delay={0.1}>
+              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif text-[#14120f] leading-tight">
+                Designing Spaces,<br/> Building Lifestyles
+              </h1>
+            </AnimatedText>
+            <AnimatedText animateOnLoad={true} delay={0.2}>
+              <p className="text-lg text-[#5E5E5E] leading-relaxed">
+                At Kolorstones Home Interiors, we believe that your home should be a reflection of who you are. Located in the heart of Thanjavur, we specialize in creating elegant, functional, and highly personalized spaces that elevate everyday living.
+              </p>
+            </AnimatedText>
+            <AnimatedText animateOnLoad={true} delay={0.3}>
+              <div className="pt-4 flex gap-8">
+                <div>
+                  <h4 className="text-3xl font-serif text-[#3F6A80]">150+</h4>
+                  <p className="text-[#5E5E5E] text-sm mt-1 uppercase tracking-wide">Projects Delivered</p>
+                </div>
+                <div>
+                  <h4 className="text-3xl font-serif text-[#3F6A80]">100%</h4>
+                  <p className="text-[#5E5E5E] text-sm mt-1 uppercase tracking-wide">Client Satisfaction</p>
+                </div>
               </div>
-            </div>
+            </AnimatedText>
           </div>
           
           <div className="w-full lg:w-1/2 relative">
@@ -57,8 +66,12 @@ export default function AboutPage() {
         
         <div className="w-full max-w-7xl mx-auto px-6 lg:px-16 relative z-10">
           <div className="text-center max-w-2xl mx-auto mb-16 md:mb-20">
-            <h2 className="text-3xl md:text-4xl font-serif text-[#14120f] mb-4">Our Core Philosophy</h2>
-            <p className="text-[#5E5E5E] text-lg">We don't just fill empty rooms. We design environments that inspire, comfort, and endure.</p>
+            <AnimatedText>
+              <h2 className="text-3xl md:text-4xl font-serif text-[#14120f] mb-4">Our Core Philosophy</h2>
+            </AnimatedText>
+            <AnimatedText delay={0.2}>
+              <p className="text-[#5E5E5E] text-lg">We don't just fill empty rooms. We design environments that inspire, comfort, and endure.</p>
+            </AnimatedText>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
@@ -103,15 +116,21 @@ export default function AboutPage() {
           {/* Subtle Background Glow */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] max-w-3xl aspect-square bg-[#3F6A80]/30 blur-[100px] rounded-full pointer-events-none group-hover:bg-[#3F6A80]/40 transition-colors duration-1000" />
           
-          <h2 className="text-3xl md:text-5xl font-serif mb-6 relative z-10 leading-tight">
-            "We treat every home as if it were our own."
-          </h2>
-          <p className="text-lg md:text-xl text-gray-300 max-w-2xl font-light mb-10 relative z-10">
-            Our promise is simple: complete transparency, exceptional craftsmanship, and a seamless journey from the first sketch to the final handover. 
-          </p>
-          <Link href="/contact" className="relative z-10 bg-[#3F6A80] hover:bg-white hover:text-[#14120f] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-[0_0_40px_rgba(63,106,128,0.4)] hover:shadow-xl hover:-translate-y-1">
-            Start Your Journey With Us
-          </Link>
+          <AnimatedText>
+            <h2 className="text-3xl md:text-5xl font-serif mb-6 relative z-10 leading-tight">
+              "We treat every home as if it were our own."
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-lg md:text-xl text-gray-300 max-w-2xl font-light mb-10 relative z-10">
+              Our promise is simple: complete transparency, exceptional craftsmanship, and a seamless journey from the first sketch to the final handover. 
+            </p>
+          </AnimatedText>
+          <AnimatedText delay={0.4}>
+            <Link href="/contact" className="relative z-10 bg-[#3F6A80] hover:bg-white hover:text-[#14120f] px-8 py-4 rounded-full font-medium transition-all duration-300 shadow-[0_0_40px_rgba(63,106,128,0.4)] hover:shadow-xl hover:-translate-y-1">
+              Start Your Journey With Us
+            </Link>
+          </AnimatedText>
         </div>
       </section>
 

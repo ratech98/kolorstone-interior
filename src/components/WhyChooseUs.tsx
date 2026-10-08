@@ -1,18 +1,23 @@
 import React from "react";
 import { WHY } from "@/lib/data";
+import AnimatedText from "@/components/AnimatedText";
 
 export default function WhyChooseUs() {
   return (
     <section className="bg-[#f3f3f3] py-24 px-6 relative font-satoshi">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6">
-            Why Choose Us
-          </h2>
-          <p className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light">
-            We believe in creating spaces that are not only beautiful but also
-            deeply personal and functional.
-          </p>
+          <AnimatedText>
+            <h2 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6">
+              Why Choose Us
+            </h2>
+          </AnimatedText>
+          <AnimatedText delay={0.2}>
+            <p className="text-[#5E5E5E] text-lg md:text-xl max-w-2xl mx-auto font-light">
+              We believe in creating spaces that are not only beautiful but also
+              deeply personal and functional.
+            </p>
+          </AnimatedText>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

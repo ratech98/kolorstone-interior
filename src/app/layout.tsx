@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
 import { SITE } from "@/lib/site";
-import Reveal from "@/components/Reveal";
 import JsonLd from "@/components/JsonLd";
 import SiteNavbar from "@/components/SiteNavbar";
 import Footer from "@/components/Footer";
@@ -41,7 +40,6 @@ export default function RootLayout({
         <SiteNavbar />
         {children}
         <Footer />
-        <Reveal />
         <GoogleAnalytics />
         <JsonLd data={[businessSchema(), websiteSchema()]} />
       </body>
