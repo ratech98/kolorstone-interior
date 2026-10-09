@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import logo from "@/assets/logo.png";
+import logo from "@/assets/logo2.png";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
 
