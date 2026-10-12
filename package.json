@@ -9,6 +9,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
+    "@calcom/embed-react": "^1.5.3",
     "@tailwindcss/postcss": "^4.3.3",
     "firebase": "^12.19.0",
     "framer-motion": "^14.0.0",
