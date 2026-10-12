@@ -18,7 +18,7 @@ export default function ContactPage() {
         <div className="text-center max-w-3xl mx-auto mb-16">
           <AnimatedText>
             <h1 className="text-4xl md:text-5xl font-serif text-[#14120f] mb-6">
-              Let's build something beautiful
+              Let&apos;s build something beautiful
             </h1>
           </AnimatedText>
           <AnimatedText delay={0.2}>
@@ -108,10 +108,10 @@ export default function ContactPage() {
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
-                  allowFullScreen={true}
+                  allowFullScreen
                   loading="lazy"
                   referrerPolicy="no-referrer-when-downgrade"
-                ></iframe>
+                />
               </div>
               <a
                 href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent("21, Thiyagi Velu Nagar, Madhakottai, Nanjikottai, Thanjavur, Tamil Nadu 613007")}`}
@@ -120,7 +120,7 @@ export default function ContactPage() {
                 className="inline-flex items-center justify-center gap-2 text-xs font-semibold text-[#3F6A80] hover:text-[#2e4d5d] hover:underline self-end pt-1"
               >
                 <span>Open in Google Maps</span>
-                <span aria-hidden="true">→</span>
+                <span aria-hidden="true">&rarr;</span>
               </a>
             </div>
           </div>
