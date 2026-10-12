@@ -112,6 +112,13 @@ export const LOCATIONS: Location[] = [
     areas: ["Vallam", "Nanjikottai", "Nearby villages"],
     nearby: ["thanjavur", "orathanadu", "pudukkottai", "trichy"],
   },
+  {
+    slug: "ayyampettai", name: "Ayyampettai", district: "Thanjavur",
+    intro: "Kolorstones Home Interiors designs and executes custom residential and commercial interiors in Ayyampettai and nearby Cauvery delta neighbourhoods.",
+    context: "Conveniently accessible from our studio, Ayyampettai homes blend classic delta architecture with modern modular living. We specialize in tailored modular kitchens, durable bedroom wardrobes, custom pooja spaces, and elegant living room makeovers designed for durability and daily comfort.",
+    areas: ["Ayyampettai town", "Pasupathikoil", "Chakkarapalli", "Thiruvaiyaru Road", "Nearby panchayats"],
+    nearby: ["thanjavur", "kumbakonam", "thiruvaiyaru", "vallam"],
+  },
 ];
 
 export const getLocation = (slug: string) => LOCATIONS.find((l) => l.slug === slug);

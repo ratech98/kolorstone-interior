@@ -27,6 +27,26 @@ export const SERVICES: Service[] = [
     ],
   },
   {
+    slug: "bedroom-interiors", name: "Bedroom Interiors", title: "Master & Guest Bedroom Interior Design",
+    summary: "Custom wardrobes, ergonomic space planning, ambient lighting and modern false ceilings.",
+    intro: "Your bedroom should be a personal sanctuary. We craft tranquil, functional bedrooms with custom storage, hydraulic beds, dressers, and warm lighting tailored to delta climate and lifestyle.",
+    includes: ["Floor-to-ceiling sliding & hinged wardrobes", "Dressing unit & full-length mirror integration", "Acoustic & warm false ceiling lighting", "Headboard paneling and ergonomic bedside tables", "Study nook or bay window seating"],
+    faqs: [
+      { q: "Can you customize wardrobes for compact bedroom spaces?", a: "Yes. We design sliding door wardrobes, loft storage, and internal organizers to maximize every square foot." },
+      { q: "Do you provide bedroom interior packages?", a: "Yes. We offer complete bedroom solutions including wardrobes, bed with storage, false ceiling, and electrical lighting points." },
+    ],
+  },
+  {
+    slug: "living-room-interiors", name: "Living Room Interiors", title: "Living Room & TV Unit Design",
+    summary: "Inviting living spaces with designer TV units, foyer partitions, and comfortable seating.",
+    intro: "The living room is the heart of your home where family connects and guests are welcomed. We design striking TV feature walls, elegant partition dividers, and harmonious seating layouts.",
+    includes: ["Custom TV consoles with backlighting & fluted panels", "Foyer shoe units and decorative partitions", "Designer false ceiling with cove lighting", "Wall paneling, wallpaper & accent paint", "Space planning for natural ventilation"],
+    faqs: [
+      { q: "What materials do you use for TV entertainment units?", a: "We use high-grade BWR plywood, laminates, fluted charcoal panels, and acrylic finishes with concealed cable management." },
+      { q: "Can you design pooja unit partitions in the living room?", a: "Yes, we frequently design CNC-cut jali partitions and integrated brass-accented pooja units for delta homes." },
+    ],
+  },
+  {
     slug: "office-commercial-interiors", name: "Office & Commercial", title: "Office & Commercial Interior Design",
     summary: "Offices, showrooms and retail spaces that look professional and work hard.",
     intro: "We design workplaces and shops around workflow, brand and the people who use them, from small offices to retail interiors.",
