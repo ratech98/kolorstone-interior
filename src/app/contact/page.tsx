@@ -72,8 +72,18 @@ export default function ContactPage() {
                   <Clock size={26} />
                 </div>
                 <div className="pt-1">
-                  <h3 className="text-lg font-semibold text-[#14120f] mb-1">Working Hours</h3>
-                  <p className="text-[#5E5E5E] leading-relaxed">Monday - Saturday<br/>10:00 AM - 7:00 PM</p>
+                  <div className="flex items-center gap-2 mb-1">
+                    <h3 className="text-lg font-semibold text-[#14120f]">Working Hours</h3>
+                    {/* <span className="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+                      Open Daily
+                    </span> */}
+                  </div>
+                  <p className="text-[#14120f] font-medium text-base">
+                    Monday – Sunday
+                  </p>
+                  <p className="text-[#5E5E5E] text-sm mt-0.5">
+                    09:00 AM – 09:00 PM
+                  </p>
                 </div>
               </div>
             </div>

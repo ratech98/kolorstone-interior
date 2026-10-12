@@ -34,7 +34,7 @@ export const SITE = {
   // Your Google Business Profile / Maps share link. Strongly recommended (feeds schema `hasMap`).
   googleMapsUrl: "",
   // e.g. ["Mo-Sa 09:30-19:00"]. Leave empty until confirmed.
-  openingHours: [] as string[],
+  openingHours: ["Mo-Su 09:00-21:00"],
   heroImage: "photo-1600210492486-724fe5c67fb0",
   services: [
     "Residential Interiors",
