@@ -1,7 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { SITE, fullAddress } from "@/lib/site";
-import logo from "@/assets/logo2.png";
+import logo from "@/assets/logo.png";
 import { Phone, MessageCircle, Mail, MapPin } from "lucide-react";
 
 const InstagramIcon = ({
