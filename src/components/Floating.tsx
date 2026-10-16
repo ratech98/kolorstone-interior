@@ -19,12 +19,17 @@ const WhatsAppIcon = ({ className = "w-5 h-5" }: { className?: string }) => (
   </svg>
 );
 
+// Toggle Cal.com meeting option (set to true whenever you want to re-enable)
+const ENABLE_CAL = false;
+
 export default function Floating() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
 
   useEffect(() => {
     setMounted(true);
+
+    if (!ENABLE_CAL) return;
 
     // Initialize Cal.com embed integration
     (async function () {
@@ -82,18 +87,22 @@ export default function Floating() {
       hoverBg: "hover:bg-[#25D366]/10 active:bg-[#25D366]/20",
       isCal: false,
     },
-    {
-      id: "cal",
-      label: "Book a Meeting",
-      sublabel: "cal.com/kolorstone",
-      href: undefined,
-      icon: <Calendar className="w-5 h-5 text-white" />,
-      badgeColor:
-        "bg-[#3F6A80] text-white shadow-[0_4px_16px_rgba(63,106,128,0.4)]",
-      hoverBg: "hover:bg-[#3F6A80]/10 active:bg-[#3F6A80]/20",
-      isCal: true,
-      calLink: "vijay-iy2uad/kolorstone",
-    },
+    ...(ENABLE_CAL
+      ? [
+          {
+            id: "cal",
+            label: "Book a Meeting",
+            sublabel: "cal.com/kolorstone",
+            href: undefined,
+            icon: <Calendar className="w-5 h-5 text-white" />,
+            badgeColor:
+              "bg-[#3F6A80] text-white shadow-[0_4px_16px_rgba(63,106,128,0.4)]",
+            hoverBg: "hover:bg-[#3F6A80]/10 active:bg-[#3F6A80]/20",
+            isCal: true,
+            calLink: "vijay-iy2uad/kolorstone",
+          },
+        ]
+      : []),
     {
       id: "call",
       label: "Call Directly",
