@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Phone, Calendar, MessageCircle, X } from "lucide-react";
 import { getCalApi } from "@calcom/embed-react";
@@ -25,6 +25,7 @@ const ENABLE_CAL = false;
 export default function Floating() {
   const [isOpen, setIsOpen] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const containerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
@@ -50,13 +51,30 @@ export default function Floating() {
     })();
   }, []);
 
-  // Close floating menu on Escape key
+  // Close floating menu on Escape key or click outside
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") setIsOpen(false);
     };
+
+    const handleClickOutside = (e: MouseEvent | TouchEvent) => {
+      if (
+        containerRef.current &&
+        !containerRef.current.contains(e.target as Node)
+      ) {
+        setIsOpen(false);
+      }
+    };
+
     window.addEventListener("keydown", handleKeyDown);
-    return () => window.removeEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("touchstart", handleClickOutside);
+
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("touchstart", handleClickOutside);
+    };
   }, []);
 
   const rawPhone = SITE.phone?.replace(/[^0-9]/g, "") || SITE.whatsapp;
@@ -117,31 +135,16 @@ export default function Floating() {
   ];
 
   return (
-    <>
-      {/* Background touch-dismiss overlay when open on mobile/tablet */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.2 }}
-            onClick={() => setIsOpen(false)}
-            className="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-[9998]"
-            aria-hidden="true"
-          />
-        )}
-      </AnimatePresence>
-
-      <div
-        className="fixed bottom-[20%] right-5 sm:bottom-6 sm:right-6 md:bottom-[15%] lg:bottom-[8%] md:right-8 z-[9999] flex flex-col items-end select-none pointer-events-auto"
-        style={{
-          paddingBottom: "max(env(safe-area-inset-bottom, 0px), 0px)",
-          paddingRight: "max(env(safe-area-inset-right, 0px), 0px)",
-        }}
-        role="region"
-        aria-label="Quick contact actions"
-      >
+    <div
+      ref={containerRef}
+      className="fixed bottom-[20%] right-5 sm:bottom-6 sm:right-6 md:bottom-[15%] lg:bottom-[8%] md:right-8 z-[9999] flex flex-col items-end select-none pointer-events-auto"
+      style={{
+        paddingBottom: "max(env(safe-area-inset-bottom, 0px), 0px)",
+        paddingRight: "max(env(safe-area-inset-right, 0px), 0px)",
+      }}
+      role="region"
+      aria-label="Quick contact actions"
+    >
         {/* Floating Menu Popout */}
         <AnimatePresence>
           {isOpen && (
@@ -289,6 +292,5 @@ export default function Floating() {
           </button>
         </div>
       </div>
-    </>
   );
 }
