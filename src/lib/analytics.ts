@@ -1,5 +1,6 @@
 // Replace this with your actual Google Analytics Measurement ID (e.g., "G-1234567890")
-export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
+export const GA_TRACKING_ID =  "G-3VRXJF2SL0";
+// export const GA_TRACKING_ID =  process.env.NEXT_PUBLIC_GA_ID || "G-XXXXXXXXXX";
 
 type GTagEvent = {
   action: string;
