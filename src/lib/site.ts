@@ -2,7 +2,7 @@
 export const SITE = {
   name: "Kolorstones Home Interiors",
   shortName: "Kolorstones",
-  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://yourdomain.com").replace(
+  url: (process.env.NEXT_PUBLIC_SITE_URL || "https://kolorstone-interior.vercel.app").replace(
     /\/$/,
     "",
   ),
