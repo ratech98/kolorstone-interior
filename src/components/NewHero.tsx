@@ -7,6 +7,7 @@ import heroMobileImg from "@/assets/hero_mobile_img.png";
 import logo from "@/assets/logo.png";
 import { trackEvent } from "@/lib/analytics";
 import AnimatedText from "./AnimatedText";
+import { SITE } from "@/lib/site";
 
 export default function NewHero() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -188,7 +189,7 @@ export default function NewHero() {
                   VIEW OUR WORK
                 </button>
               </Link>
-              <Link
+              {/* <Link
                 href="/contact"
                 onClick={() =>
                   trackEvent({
@@ -202,7 +203,24 @@ export default function NewHero() {
                 <button className="border border-white lg:border-[#3F6A80] text-white lg:text-[#3F6A80] bg-white/10 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-[#3F6A80] transition w-full shadow-lg lg:shadow-none">
                   ENQUIRY NOW
                 </button>
-              </Link>
+              </Link> */}
+              <a
+                href={`https://wa.me/${SITE.whatsapp}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() =>
+                  trackEvent({
+                    action: "click",
+                    category: "Hero CTA",
+                    label: "Enquiry Now",
+                  })
+                }
+                className="w-full sm:w-auto"
+              >
+                <span className="border border-white lg:border-[#3F6A80] text-white lg:text-[#3F6A80] bg-white/10 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-[#3F6A80] transition w-full shadow-lg lg:shadow-none inline-block">
+                  ENQUIRY NOW
+                </span>
+              </a>
             </div>
           </AnimatedText>
         </div>
