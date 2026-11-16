@@ -32,7 +32,9 @@ export default function NewHero() {
   return (
     <div className="lg:min-h-screen md:min-h-[50vh] bg-[#f3f3f3] relative font-satoshi flex flex-col items-center pt-0 lg:pt-8 overflow-hidden">
       {/* 3D Sphere & Atom Animations */}
-      <style dangerouslySetInnerHTML={{ __html: `
+      <style
+        dangerouslySetInnerHTML={{
+          __html: `
         @keyframes spin-sphere {
           0% { transform: rotateX(20deg) rotateY(0deg); }
           100% { transform: rotateX(20deg) rotateY(360deg); }
@@ -46,7 +48,9 @@ export default function NewHero() {
           10% { opacity: 1; transform: scale(1.5); box-shadow: 0 0 15px #3F6A80; }
           20% { opacity: 0; transform: scale(0.2); box-shadow: none; }
         }
-      `}} />
+      `,
+        }}
+      />
 
       {/* Interactive 3D Atom Sphere */}
       <div
@@ -149,9 +153,12 @@ export default function NewHero() {
         {/* Right Side: Typography */}
         <div className="w-full lg:w-1/2 flex flex-col justify-end lg:justify-center items-center lg:items-start text-center lg:text-left relative z-10 px-6 h-full mt-auto lg:mt-0">
           <AnimatedText animateOnLoad={true}>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white lg:text-black leading-[1.1] mb-6 drop-shadow-lg lg:drop-shadow-none">
+            {/* <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white lg:text-black leading-[1.1] mb-6 drop-shadow-lg lg:drop-shadow-none">
               Spaces Designed To <br className="hidden lg:block" /> Feel Like
               Home.
+            </h1> */}
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-medium text-white lg:text-black leading-[1.1] mb-6 drop-shadow-lg lg:drop-shadow-none">
+              Kolorstones Home Interiors
             </h1>
           </AnimatedText>
           <AnimatedText animateOnLoad={true} delay={0.2}>
@@ -160,7 +167,11 @@ export default function NewHero() {
               elegance, and your personal style.
             </p>
           </AnimatedText>
-          <AnimatedText animateOnLoad={true} delay={0.4} className="w-full sm:w-auto">
+          <AnimatedText
+            animateOnLoad={true}
+            delay={0.4}
+            className="w-full sm:w-auto"
+          >
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
               <Link
                 href="/projects"
