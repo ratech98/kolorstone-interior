@@ -75,7 +75,7 @@ export default function ProjectCard({ project }: { project: Project }) {
         {/* Swipeable Container */}
         <div 
           ref={scrollRef}
-          className={`w-full h-full flex overflow-x-auto hide-scrollbar ${isDragging ? '' : 'snap-x snap-mandatory'} [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]`}
+          className={`w-full h-full flex overflow-x-auto overflow-y-hidden hide-scrollbar ${isDragging ? '' : 'snap-x snap-mandatory'} [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]`}
           onScroll={handleScroll}
           onMouseDown={onMouseDown}
           onMouseLeave={onMouseLeave}
