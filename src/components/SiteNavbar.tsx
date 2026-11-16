@@ -5,6 +5,7 @@ import Image from "next/image";
 import logo from "@/assets/logo2.png";
 import { usePathname } from "next/navigation";
 import { trackEvent } from "@/lib/analytics";
+import { SITE } from "@/lib/site";
 
 export default function SiteNavbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -73,11 +74,27 @@ export default function SiteNavbar() {
         {/* Right Actions */}
         <div className="flex items-center gap-4">
           <div className="hidden md:block">
-            <Link href="/contact" onClick={() => trackEvent({ action: "click", category: "Navigation CTA", label: "Enquiry Now Header" })}>
+            {/* <Link href="/contact" onClick={() => trackEvent({ action: "click", category: "Navigation CTA", label: "Enquiry Now Header" })}>
               <button className="bg-[#3F6A80] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#2e4d5d] transition">
                 Enquiry Now
               </button>
-            </Link>
+            </Link> */}
+            <a
+              href={`https://wa.me/${SITE.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() =>
+                trackEvent({
+                  action: "click",
+                  category: "Navigation CTA",
+                  label: "Enquiry Now Header",
+                })
+              }
+            >
+              <span className="inline-flex bg-[#3F6A80] text-white px-6 py-2.5 rounded-full text-sm font-medium hover:bg-[#2e4d5d] transition">
+                Enquiry Now
+              </span>
+            </a>
           </div>
 
           <button
@@ -121,11 +138,28 @@ export default function SiteNavbar() {
             <Link href="/contact" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile Contact" }); setIsMobileMenuOpen(false); }} className={`${isActive("/contact") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Contact</Link>
           </div>
           <div className="mt-auto md:hidden">
-            <Link href="/contact" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Enquiry Now Mobile" }); setIsMobileMenuOpen(false); }}>
+            {/* <Link href="/contact" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Enquiry Now Mobile" }); setIsMobileMenuOpen(false); }}>
               <button className="w-full bg-[#3F6A80] text-white px-6 py-3.5 rounded-full text-sm font-medium hover:bg-[#2e4d5d] transition">
                 Enquiry Now
               </button>
-            </Link>
+            </Link> */}
+            <a
+              href={`https://wa.me/${SITE.whatsapp}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={() => {
+                trackEvent({
+                  action: "click",
+                  category: "Mobile Navigation",
+                  label: "Enquiry Now Mobile",
+                });
+                setIsMobileMenuOpen(false);
+              }}
+            >
+              <span className="inline-flex w-full justify-center bg-[#3F6A80] text-white px-6 py-3.5 rounded-full text-sm font-medium hover:bg-[#2e4d5d] transition">
+                Enquiry Now
+              </span>
+            </a>
           </div>
         </div>
       </div>
