@@ -42,7 +42,9 @@ export const SITE = {
     "Office & Commercial",
     "Turnkey Execution",
   ],
-  gscVerification: process.env.NEXT_PUBLIC_GSC_VERIFICATION || "",
+  gscVerification:
+    process.env.NEXT_PUBLIC_GSC_VERIFICATION ||
+    "VHjeo_1xy-GwSzIbkXRe88sg5T_s_i-f26Gpu5m5jm0",
   lastUpdated: "2026-10-05",
 };
 
