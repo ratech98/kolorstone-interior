@@ -1,7 +1,7 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import Link from "next/link";
 import Image from "next/image";
+// import Link from "next/link";
 import heroImg from "@/assets/hero_img1.png";
 import heroMobileImg from "@/assets/hero_mobile_img.png";
 import logo from "@/assets/logo.png";
@@ -174,7 +174,7 @@ export default function NewHero() {
             className="w-full sm:w-auto"
           >
             <div className="flex flex-col sm:flex-row items-center gap-4 w-full sm:w-auto">
-              <Link
+              {/* <Link
                 href="/projects"
                 onClick={() =>
                   trackEvent({
@@ -188,7 +188,7 @@ export default function NewHero() {
                 <button className="bg-[#3F6A80] text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-[#2e4d5d] transition w-full shadow-lg lg:shadow-none">
                   VIEW OUR WORK
                 </button>
-              </Link>
+              </Link> */}
               {/* <Link
                 href="/contact"
                 onClick={() =>
@@ -217,7 +217,7 @@ export default function NewHero() {
                 }
                 className="w-full sm:w-auto"
               >
-                <span className="border border-white lg:border-[#3F6A80] text-white lg:text-[#3F6A80] bg-white/10 lg:bg-transparent backdrop-blur-sm lg:backdrop-blur-none px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-white hover:text-[#3F6A80] transition w-full shadow-lg lg:shadow-none inline-block">
+                <span className="bg-[#3F6A80] text-white px-8 py-3.5 rounded-full text-sm font-medium tracking-wide hover:bg-[#2e4d5d] transition w-full shadow-lg lg:shadow-none">
                   ENQUIRY NOW
                 </span>
               </a>

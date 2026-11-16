@@ -62,9 +62,9 @@ export default function SiteNavbar() {
           <Link href="/about" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Desktop About" })} className={`${isActive("/about") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
             About Us
           </Link>
-          <Link href="/projects" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Desktop Projects" })} className={`${isActive("/projects") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
+          {/* <Link href="/projects" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Desktop Projects" })} className={`${isActive("/projects") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
             Projects
-          </Link>
+          </Link> */}
           <Link href="/contact" onClick={() => trackEvent({ action: "click", category: "Navigation", label: "Desktop Contact" })} className={`${isActive("/contact") ? "text-[#3F6A80] border-b-2 border-[#3F6A80] pb-1" : "hover:text-black transition"}`}>
             Contact
           </Link>
@@ -117,7 +117,7 @@ export default function SiteNavbar() {
           <div className="flex flex-col gap-6 text-lg font-medium text-[#5E5E5E]">
             <Link href="/" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile Home" }); setIsMobileMenuOpen(false); }} className={`${isActive("/") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Home</Link>
             <Link href="/about" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile About Us" }); setIsMobileMenuOpen(false); }} className={`${isActive("/about") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>About Us</Link>
-            <Link href="/projects" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile Projects" }); setIsMobileMenuOpen(false); }} className={`${isActive("/projects") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Projects</Link>
+            {/* <Link href="/projects" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile Projects" }); setIsMobileMenuOpen(false); }} className={`${isActive("/projects") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Projects</Link> */}
             <Link href="/contact" onClick={() => { trackEvent({ action: "click", category: "Mobile Navigation", label: "Mobile Contact" }); setIsMobileMenuOpen(false); }} className={`${isActive("/contact") ? "text-[#3F6A80] font-semibold" : "hover:text-black transition"}`}>Contact</Link>
           </div>
           <div className="mt-auto md:hidden">
